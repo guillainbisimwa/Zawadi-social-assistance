@@ -160,30 +160,72 @@
                 											<table id="footable_2" class="table" data-paging="true" data-filtering="true" data-sorting="true">
                 												<thead>
                 												<tr>
-                													<th data-name="id" data-breakpoints="xs" data-type="number">ID</th>
-                													<th data-name="firstName">First Name</th>
-                													<th data-name="lastName">Last Name</th>
-                													<th data-name="jobTitle" data-breakpoints="xs">Job Title</th>
-                													<th data-name="startedOn" data-breakpoints="xs sm" data-type="date" data-format-string="MMMM Do YYYY">Started On</th>
-                													<th data-name="dob" data-breakpoints="xs sm md" data-type="date" data-format-string="MMMM Do YYYY">Date of Birth</th>
+                													
+                                          <th data-name="id" data-breakpoints="xs" data-type="number">ID</th>
+                                          <th data-name="nom_parent">Nom du parent</th>
+                                          <th data-name="Age" data-breakpoints="xs sm md lg">Age</th>
+                                          <th data-name="genre" data-breakpoints="xs sm md lg">Genre</th>
+                                          <th data-name="etat_civil" data-breakpoints="xs sm md lg">Etat civil</th>
+                                          <th data-name="Telephone">Telephone</th>
+                                          <th data-name="Fonction" data-breakpoints="xs sm md lg">Fonction</th>
+                                          <th data-name="Adresse" data-breakpoints="xs sm md lg">Adresse</th>
+                                          <th data-name="niv_rev">Revenue</th>
+                                          <th data-name="taille_menage">Taille menage</th>
+                                          <th data-name="t_m_g" data-breakpoints="xs sm md lg">Garçons menage</th>
+                                          <th data-name="t_m_f" data-breakpoints="xs sm md lg">Filles menage</th>
+                                          <th data-name="enf_sco">Enfants scolarisés</th>
+                                          <th data-name="enf_sco_g" data-breakpoints="xs sm md lg">Garçons scolarisés</th>
+                                          <th data-name="enf_sco_f" data-breakpoints="xs sm md lg">Filles scolarisées</th>
+                                          <th data-name="enf_zsa">Enfant zsa</th>
+                                          <th data-name="enf_zsa_g" data-breakpoints="xs sm md lg">Garçons ZSA</th>
+                                          <th data-name="enf_zsa_f" data-breakpoints="xs sm md lg">FILLES zsa</th>
+                                          <th data-name="code_zsa" >Code zsa</th>
+
                 												</tr>
                 												</thead>
                 												<tbody>
-                												<tr data-expanded="true">
+                												<tr data-expanded="false">
                 													<td>1</td>
-                													<td>Dennise</td>
-                													<td>Fuhrman</td>
-                													<td>High School History Teacher</td>
-                													<td>November 8th 2011</td>
-                													<td>July 25th 1960</td>
+                													<td>Dennise Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>5</td>
+                                          <td>5</td>
+                                          <td>5</td>
+                                          <td>5</td>
+                                          <td>5</td>
+                                          <td>5</td>
+                                          <td>5</td>
+                                          <td>5</td>
+                                          <td>5</td>
+                                          <td>1</td>
+                                          <td>0</td>
+                                          <td>2</td>
+                													<td>ZSA-009</td>
                 												</tr>
-                												<tr>
-                													<td>2</td>
-                													<td>Elodia</td>
-                													<td>Weisz</td>
-                													<td>Wallpaperer Helper</td>
-                													<td>October 15th 2010</td>
-                													<td>March 30th 1982</td>
+                                        <tr data-expanded="false">
+                													<td>1</td>
+                													<td>Dennise Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>Fuhrman</td>
+                                          <td>8</td>
+                													<td>6</td>
+                                          <td>ZSA-012</td>
+
                 												</tr>
                 												</tbody>
                 											</table>
@@ -200,102 +242,143 @@
                 													<div class="modal-body">
                 														<input type="number" id="id" name="id" class="hidden"/>
 
-                														<div class="form-group required">
-                                              <div class="col-sm-6">
-                                                <label for="" class=" control-label pull-left"> Nom complet du parent: </label>
-                																<input type="text" class="form-control" id="nom_parent" name="nom_parent" placeholder="Nom complet du parent" required>
-                															</div>
+                														<div class="form-group1 required1">
+                                              <div class="col-md-6">
+                                                      <div class="form-group label-floating is-empty">
+                                                          <label class="control-label">Nom complet du parent:</label>
+                                                          <input id="nom_parent" name="nom_parent" type="text" class="form-control" autocomplete="off">
+                                                      <span class="material-input"></span></div>
+                                              </div>
+
                                               <div class="col-sm-2">
-                                                <label for="" class=" control-label pull-left"> Age: </label>
-                                                <input type="text" class="form-control" id="age" name="age" placeholder="age" required>
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Age</label>
+                                                    <input id="Age" type="text" class="form-control">
+                                                <span class="material-input"></span></div>
                                               </div>
                                               <div class="col-sm-2">
-                                                <label for="" class=" control-label pull-left"> Genre: </label>
-                                                <select class="form-control" id="genre" name="genre" placeholder="genre" required>
-                                                  <option></option>
-                                                  <option>F</option>
-                                                  <option>M</option>
-                                                </select>
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Genre</label>
+                                                    <select class="form-control" id="genre" name="genre" placeholder="genre" required>
+                                                      <option></option>
+                                                      <option>F</option>
+                                                      <option>M</option>
+                                                    </select>
+                                                <span class="material-input"></span></div>
                                               </div>
+
                                               <div class="col-sm-2">
-                                                <label for="" class=" control-label pull-left"> Etat civil: </label>
-                                                <select class="form-control" id="etat_civil" name="etat_civil" placeholder="Etat civil" required>
-                                                  <option></option>
-                                                  <option>M</option>
-                                                  <option>C</option>
-                                                  <option>D</option>
-                                                  <option>V</option>
-                                                </select>
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Etat civil</label>
+                                                    <select class="form-control" id="etat_civil" name="etat_civil" required>
+                                                      <option></option>
+                                                      <option>M</option>
+                                                      <option>C</option>
+                                                      <option>D</option>
+                                                      <option>V</option>
+                                                    </select>
+                                                <span class="material-input"></span></div>
                                               </div>
                                             </div>
 
                 														<div class="row">
                                               <div class="col-sm-6">
                                                 <div class="col-m-12">
-                                                  <div class="form-group required">
-                                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Téléphone" >
-                                                  </div>
-                                                </div>
-                                                <div class="col-m-12">
-                                                  <div class="form-group required">
-                                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Téléphone" >
-                                                  </div>
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Telephone</label>
+                                                      <input id="Telephone" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
                                                 </div>
 
                                                 <div class="col-m-12">
-                                                  <div class="form-group required">
-                                                    <input type="text" class="form-control" id="Fonction" name="Fonction" placeholder="Fonction" >
-                                                  </div>
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Fonction</label>
+                                                      <input id="Fonction" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
                                                 </div>
 
                                                 <div class="col-m-12">
-                                                   <div class="form-group required">
-                                                      <textarea class="form-control" placeholder="Adresse" rows="2" ></textarea>
-                                                    </div>
+                                                   <!-- <div class="form-group required">
+                                                      <textarea class="form-control" placeholder="Adresse" rows="4" ></textarea>
+                                                    </div> -->
+                                                    <div class="form-group label-floating is-empty">
+                                                        <label class="control-label">Adresse</label>
+                                                        <textarea class="form-control" id="Adresse" rows="4" ></textarea>
+                                                    <span class="material-input"></span></div>
                                                 </div>
-
                                               </div>
 
                                               <div class="col-sm-6">
                                                 <div class="col-sm-12">
-                                                  <div class="form-group required">
-                                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Téléphone" >
-                                                  </div>
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Niveau de revenue / mois</label>
+                                                      <input id="niv_rev" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
                                                 </div>
 
-                                                <div class="col-sm-12">
-                                                  <textarea class="form-control" placeholder="Adresse" rows="2" ></textarea>
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Taille menage</label>
+                                                      <input id="taille_menage" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Garcons</label>
+                                                      <input id="t_m_g" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Filles</label>
+                                                      <input id="t_m_f" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Enfants scolarisés</label>
+                                                      <input id="enf_sco" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Garcons</label>
+                                                      <input id="enf_sco_g" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Filles</label>
+                                                      <input id="enf_sco_f" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Enfants au ZSA</label>
+                                                      <input id="enf_zsa" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Garcons</label>
+                                                      <input id="enf_zsa_g" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Filles</label>
+                                                      <input id="enf_zsa_f" type="text" class="form-control">
+                                                  <span class="material-input"></span></div>
                                                 </div>
                                               </div>
                                             </div>
 
-                                              <div class="col-sm-6">
-                                                <label for="" class=" control-label pull-left"> Adresse11: </label>
-                                                <textarea class="form-control" placeholder="Adresse00" rows="2" ></textarea>
-                                              </div>
-
-                														<div class="form-group">
-                															<label for="jobTitle" class="col-sm-3 control-label">Job Title</label>
-                															<div class="col-sm-9">
-                																<input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Job Title">
-                															</div>
-                														</div>
-                														<div class="form-group required">
-                															<label for="startedOn" class="col-sm-3 control-label">Started On</label>
-                															<div class="col-sm-9">
-                																<input type="text" class="form-control" id="startedOn" name="startedOn" placeholder="Started On" required>
-                															</div>
-                														</div>
-                														<div class="form-group">
-                															<label for="dob" class="col-sm-3 control-label">Date of Birth</label>
-                															<div class="col-sm-9">
-                																<input type="text" class="form-control" id="dob" name="dob" placeholder="Date of Birth">
-                															</div>
-                														</div>
                 													</div>
                 													<div class="modal-footer">
-                														<button type="submit" class="btn btn-warning">Save changes</button>
-                														<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                														<button type="submit" class="btn btn-warning">Enregistrer</button>
+                														<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 													</div>
                 												</form>
                 											</div>
