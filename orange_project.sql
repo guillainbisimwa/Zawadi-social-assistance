@@ -4,13 +4,27 @@ CREATE DATABASE IF NOT EXISTS orange_project CHARACTER SET utf8;
 use orange_project;
 set names UTF8;
 
-CREATE TABLE  if not EXISTS client_tab
+CREATE TABLE  if not EXISTS parent_tab
 (
 	id_c int not null primary key auto_increment,
-	nom_client varchar(30) not null,
-  num_transaction int unique,
-  mail varchar(30) not null,
-	etat_activation int not null DEFAULT 0
+	nom_parent varchar(30) not null,
+	Age int not null,
+	genre varchar(30) not null,
+	etat_civil varchar(30) not null,
+	Telephone varchar(30) not null,
+	Fonction varchar(50) not null,
+	Adresse varchar(50) not null,
+	niv_rev double not null,
+	taille_menage int not null,
+	t_m_g int not null,
+	t_m_f int not null,
+	enf_sco int not null,
+	enf_sco_g int not null,
+	enf_sco_f int not null,
+	enf_zsa int not null,
+	enf_zsa_g int not null,
+	enf_zsa_f int not null,
+	code_zsa varchar(10)
 );
 
 CREATE TABLE  if not EXISTS user

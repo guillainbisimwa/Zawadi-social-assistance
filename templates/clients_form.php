@@ -160,7 +160,6 @@
                 											<table id="footable_2" class="table" data-paging="true" data-filtering="true" data-sorting="true">
                 												<thead>
                 												<tr>
-                													
                                           <th data-name="id" data-breakpoints="xs" data-type="number">ID</th>
                                           <th data-name="nom_parent">Nom du parent</th>
                                           <th data-name="Age" data-breakpoints="xs sm md lg">Age</th>
@@ -180,7 +179,6 @@
                                           <th data-name="enf_zsa_g" data-breakpoints="xs sm md lg">Garçons ZSA</th>
                                           <th data-name="enf_zsa_f" data-breakpoints="xs sm md lg">FILLES zsa</th>
                                           <th data-name="code_zsa" >Code zsa</th>
-
                 												</tr>
                 												</thead>
                 												<tbody>
