@@ -401,20 +401,7 @@
                                   <th>Etat</th>
                               </thead>
                               <tbody>
-                              <?php
-                                  $id = 1;
-                                foreach ($table as $row)
-                                  {
-                                      echo("<tr>");
-                                      echo("<td>" . $id . "</td>");
-                                      echo("<td>" . $row["nom_client"] . "</td>");
-                                      echo("<td>" . $row["mail"] . "</td>");
-                                      echo("<td>" . $row["num_transaction"] . "</td>");
-                                       echo("<td>" . $row["etat_activation"] . "</td>");
-                                      echo("</tr>");
-                                      $id++;
-                                    }
-                                ?>
+                            
 
 
                               </tbody>

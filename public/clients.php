@@ -3,11 +3,16 @@
 
     // configuration
     require("../includes/config.php");
-      $table = null;
+    $table = null;
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-
-      if (empty($_POST["nom_client"]))
+      echo '<div class="alert alert-danger cl"><button type="button" aria-hidden="true" class="close cll" data-notify="dismiss">×</button>
+            <span><b> Erreur - </b> Veillez entre le nom du client s.v.p</span></div>
+            <script  type=text/javascript>$(".cll").click(function(){
+              $(".cl").css("display","none");
+            })</script>';
+      //exit;
+    /*  if (empty($_POST["nom_client"]))
       {
           //login vide
           echo '<div  class="alert alert-danger cl"><button type="button" aria-hidden="true" class="close cll" data-notify="dismiss">×</button>
@@ -67,11 +72,11 @@
             <script  type=text/javascript>$(".cll").click(function(){
               $(".cl").css("display","none");
             })</script>';
-      exit;
+      exit;*/
     }
     else
     {
-        $table = query("SELECT * FROM client_tab ");
+        $table = query("SELECT * FROM parent_tab ");
     render("clients_form.php", ["title" => "Enregistrer un client","table" => $table]);
 	}
 

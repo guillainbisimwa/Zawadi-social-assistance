@@ -83,21 +83,53 @@ $(function () {
 				enf_zsa : $editor.find("#enf_zsa").val(),
 				enf_zsa_g : $editor.find("#enf_zsa_g").val(),
 				enf_zsa_f : $editor.find("#enf_zsa_f").val()
-
-				// id: $editor.find('#id').val(),
-				// firstName: $editor.find('#firstName').val(),
-				// lastName: $editor.find('#lastName').val(),
-				// jobTitle: $editor.find('#jobTitle').val(),
-				// startedOn: moment($editor.find('#startedOn').val(), 'YYYY-MM-DD'),
-				// dob: moment($editor.find('#dob').val(), 'YYYY-MM-DD')
 			};
 
+			var _id = values.id;
+			var _nom_parent = values.nom_parent;
+			var _Age = values.Age;
+			var _genre = values.genre;
+			var _etat_civil = values.etat_civil;
+			var _Telephone = values.Telephone;
+			var _Fonction = values.Fonction;
+			var _Adresse = values.Adresse;
+			var _niv_rev = values.niv_rev;
+			var _taille_menage = values.taille_menage;
+			var _t_m_g = values.t_m_g;
+			var _t_m_f = values.t_m_f;
+			var _enf_sco = values.enf_sco;
+			var _enf_sco_g = values.enf_sco_g;
+			var _enf_sco_f = values.enf_sco_f;
+			var _enf_zsa = values.enf_zsa;
+			var _enf_zsa_g = values.enf_zsa_g;
+			var _enf_zsa_f = values.enf_zsa_f;
+
 		if (row instanceof FooTable.Row){
-			row.val(values);
+			//row.val(values);
+			//ajax submit update
+			$.ajax({
+					 type: "POST",
+					 url: "clients.php",
+					 data:{id : "0"},
+					 success: function(data) {
+							 row.val(values);
+							 $modal.modal('hide');
+						 }
+				 });
 		} else {
-			values.id = uid++;
-			ft.rows.add(values);
+			//ajax submit create
+			$.ajax({
+					 type: "POST",
+					 url: "clients.php",
+					 data:{id : "0"},
+					 success: function(data) {
+							 ft.rows.add(values);
+							 $modal.modal('hide');
+							 /*values.id = uid++;
+				 			ft.rows.add(values);*/
+						 }
+				 });
 		}
-		$modal.modal('hide');
+		//$modal.modal('hide');
 	});
 });
