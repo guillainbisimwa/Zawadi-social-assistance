@@ -13,18 +13,51 @@ $(document).ready(function() {
           $("#affreslt_aut").html(data);
         }
       });
-
-    //  guy.showNotificationerror('top','right','Login ou mots de passe incorect');
     })
     //enregistrer un client
     $("#enr_cli").click(function(){
-      var nom_client = $("#nom_client").val();
-      var mail = $("#mail").val();
+      var nom_parent = $("#nom_parent1").val();
+      var Age = $("#Age").val();
+      var genre = $("#genre").val();
+      var etat_civil = $("#etat_civil").val();
+      var Telephone = $("#Telephone").val();
+      var Fonction = $("#Fonction").val();
+      var Adresse = $("#Adresse").val();
+      var niv_rev = $("#niv_rev").val();
+      var taille_menage = $("#taille_menage").val();
+      var t_m_g = $("#t_m_g").val();
+      var t_m_f = $("#t_m_f").val();
+      var enf_sco = $("#enf_sco").val();
+      var enf_sco_g = $("#enf_sco_g").val();
+      var enf_sco_f = $("#enf_sco_f").val();
+      var enf_zsa = $("#enf_zsa").val();
+      var enf_zsa_g = $("#enf_zsa_g").val();
+      var enf_zsa_f = $("#enf_zsa_f").val();
+
+      console.log("---> "+nom_parent);
 
       $.ajax({
         url:"clients.php",
         type:"post",
-        data:{nom_client:nom_client, mail:mail},
+        data:{
+          nom_parent : nom_parent,
+          Age : Age,
+          genre : genre,
+          etat_civil : etat_civil,
+          Telephone : Telephone,
+          Fonction : Fonction,
+          Adresse : Adresse,
+          niv_rev : niv_rev,
+          taille_menage : taille_menage,
+          t_m_g : t_m_g,
+          t_m_f : t_m_f,
+          enf_sco : enf_sco,
+          enf_sco_g : enf_sco_g,
+          enf_sco_f : enf_sco_f,
+          enf_zsa : enf_zsa,
+          enf_zsa_g : enf_zsa_g,
+          enf_zsa_f : enf_zsa_f
+        },
         success : function(data)
         {
           $("#affreslt_aut").html(data);
