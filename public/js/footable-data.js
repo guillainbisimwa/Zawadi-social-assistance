@@ -22,8 +22,13 @@ $(function () {
 			editRow: function(row){
 				var values = row.val();
 
+				//set is-focused Class
+				$editor.find('.label-floating').addClass("is-focused");
+				//var id2 = $(this).parent().parent().attr("id");
+
+
 				$editor.find('#id').val(values.id);
-				$editor.find("#nom_parent").val(values.nom_parent);
+				$editor.find("#nom_parent1").val(values.nom_parent);
 				$editor.find("#Age").val(values.Age);
 				$editor.find("#genre").val(values.genre);
 				$editor.find("#etat_civil").val(values.etat_civil);
