@@ -19,6 +19,7 @@
 <script src="js/jquery.dataTables.min.js"></script>
 
 <script src="js/footable.min.js"></script>
+<script src="js/footable-data-eleves.js"></script>
 <script src="js/footable-data.js"></script>
 <!-- <script src="js/app.min.js"></script> -->
 </html>
