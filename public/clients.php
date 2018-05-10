@@ -5,9 +5,6 @@
     $table = null;
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-      echo '<script src="js/demo.js"></script>';
-
-
       if (empty($_POST["nom_parent"]))
       {
         echo "Veillez entrer le nom_parent  s.v.p <br>";
@@ -16,97 +13,81 @@
       else if (empty($_POST["Age"]))
       {
         echo "Veillez entrer le age  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["genre"]))
       {
         echo "Veillez entrer le genre  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["etat_civil"]))
       {
         echo "Veillez entrer le etat civil  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["Telephone"]))
       {
         echo "Veillez entrer le telephone  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["Fonction"]))
       {
         echo "Veillez entrer le fonction  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["Adresse"]))
       {
         echo "Veillez entrer le adress  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["niv_rev"]))
       {
         echo "Veillez entrer le Niveau revnue  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["taille_menage"]))
       {
         echo "Veillez entrer le taille_menage  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["t_m_g"]))
       {
         echo "Veillez entrer le t_m_g  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["t_m_f"]))
       {
         echo "Veillez entrer le t_m_f  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["enf_sco"]))
       {
         echo "Veillez entrer le enf_sco  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["enf_sco_g"]))
       {
         echo "Veillez entrer le enf_sco_g  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["enf_sco_f"]))
       {
         echo "Veillez entrer le enf_sco_f  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["enf_zsa"]))
       {
         echo "Veillez entrer le enf_zsa  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["enf_zsa_g"]))
       {
         echo "Veillez entrer le enf_zsa_g  s.v.p <br>";
-
         exit;
       }
       else if (empty($_POST["enf_zsa_f"]))
       {
         echo "Veillez entrer le enf_zsa_f  s.v.p <br>";
-
         exit;
       }
 
@@ -143,13 +124,11 @@
            )=== false)
         {
             echo "Erreur <br>";
-
             exit;
         }
         else {
-          //$table = query("SELECT * FROM parent_tab ");
+            $table = query("SELECT * FROM parent_tab ");
             echo "ok";
-
             exit;
         }
 

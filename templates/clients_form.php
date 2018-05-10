@@ -181,49 +181,34 @@
                 												</tr>
                 												</thead>
                 												<tbody>
-                												<tr data-expanded="false">
-                													<td>1</td>
-                													<td>Dennise Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>5</td>
-                                          <td>5</td>
-                                          <td>5</td>
-                                          <td>5</td>
-                                          <td>5</td>
-                                          <td>5</td>
-                                          <td>5</td>
-                                          <td>5</td>
-                                          <td>5</td>
-                                          <td>1</td>
-                                          <td>0</td>
-                                          <td>2</td>
-                													<td>ZSA-009</td>
-                												</tr>
-                                        <tr data-expanded="false">
-                													<td>1</td>
-                													<td>Dennise Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>Fuhrman</td>
-                                          <td>8</td>
-                													<td>6</td>
-                                          <td>ZSA-012</td>
+                                          <?php
+                                              $id = 1;
+                                            foreach ($table as $row)
+                                              {
+                                                  echo("<tr data-expanded='false'>");
+                                                  echo("<td>" . $id . "</td>");
+                                                  echo("<td>" . $row["nom_parent"] . "</td>");
+                                                  echo("<td>" . $row["Age"] . "</td>");
+                                                  echo("<td>" . $row["genre"] . "</td>");
+                                                  echo("<td>" . $row["etat_civil"] . "</td>");
+                                                  echo("<td>" . $row["Telephone"] . "</td>");
+                                                  echo("<td>" . $row["Fonction"] . "</td>");
+                                                  echo("<td>" . $row["Adresse"] . "</td>");
+                                                  echo("<td>" . $row["niv_rev"] . "</td>");
+                                                  echo("<td>" . $row["taille_menage"] . "</td>");
+                                                  echo("<td>" . $row["t_m_g"] . "</td>");
+                                                  echo("<td>" . $row["t_m_f"] . "</td>");
+                                                  echo("<td>" . $row["enf_sco"] . "</td>");
+                                                  echo("<td>" . $row["enf_sco_g"] . "</td>");
+                                                  echo("<td>" . $row["enf_sco_f"] . "</td>");
+                                                  echo("<td>" . $row["enf_zsa"] . "</td>");
+                                                  echo("<td>" . $row["enf_zsa_g"] . "</td>");
+                                                  echo("<td>" . $row["enf_zsa_f"] . "</td>");
 
-                												</tr>
+                                                  echo("</tr>");
+                                                  $id++;
+                                                }
+                                            ?>
                 												</tbody>
                 											</table>
 

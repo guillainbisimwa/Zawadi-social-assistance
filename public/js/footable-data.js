@@ -144,6 +144,7 @@ $(function () {
         {
 					$('#affreslt_aut2').html(data);
 					if(data == "ok") {
+						//values.id = uid++
 						ft.rows.add(values);
 						$modal.modal('hide');
 					}
