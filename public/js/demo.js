@@ -15,7 +15,7 @@ $(document).ready(function() {
       });
     })
     //enregistrer un client
-    $("#enr_cli").click(function(){
+    $("#enr_cli1").click(function(){
       var nom_parent = $("#nom_parent1").val();
       var Age = $("#Age").val();
       var genre = $("#genre").val();

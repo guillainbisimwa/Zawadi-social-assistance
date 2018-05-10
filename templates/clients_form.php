@@ -371,6 +371,7 @@
                                                 </div>
                                               </div>
                                             </div>
+                                            <div id="affreslt_aut2">000</div>
 
                 													</div>
                 													<div class="modal-footer">

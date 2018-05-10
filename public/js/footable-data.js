@@ -66,7 +66,7 @@ $(function () {
 		var row = $modal.data('row'),
 			values = {
 
-				nom_parent : $editor.find("#nom_parent").val(),
+				nom_parent : $editor.find("#nom_parent1").val(),
 				Age : $editor.find("#Age").val(),
 				genre : $editor.find("#genre").val(),
 				etat_civil : $editor.find("#etat_civil").val(),
@@ -119,16 +119,54 @@ $(function () {
 		} else {
 			//ajax submit create
 			$.ajax({
+        url:"clients.php",
+        type:"post",
+        data:{
+          nom_parent : _nom_parent,
+          Age : _Age,
+          genre : _genre,
+          etat_civil : _etat_civil,
+          Telephone : _Telephone,
+          Fonction : _Fonction,
+          Adresse : _Adresse,
+          niv_rev : _niv_rev,
+          taille_menage : _taille_menage,
+          t_m_g : _t_m_g,
+          t_m_f : _t_m_f,
+          enf_sco : _enf_sco,
+          enf_sco_g : _enf_sco_g,
+          enf_sco_f : _enf_sco_f,
+          enf_zsa : _enf_zsa,
+          enf_zsa_g : _enf_zsa_g,
+          enf_zsa_f : _enf_zsa_f
+        },
+        success : function(data)
+        {
+					$('#affreslt_aut2').html(data);
+					if(data == "ok") {
+						ft.rows.add(values);
+						$modal.modal('hide');
+					}
+					else {
+						$('#affreslt_aut').html("Erreur, Impossible...");
+					}
+          //$("#affreslt_aut").html(data);
+					//ft.rows.add(values);
+					//$modal.modal('hide');
+					/*values.id = uid++;
+				 ft.rows.add(values);*/
+        }
+      });
+			/*$.ajax({
 					 type: "POST",
 					 url: "clients.php",
 					 data:{id : "0"},
 					 success: function(data) {
 							 ft.rows.add(values);
 							 $modal.modal('hide');
-							 /*values.id = uid++;
-				 			ft.rows.add(values);*/
+
 						 }
-				 });
+				 });*/
 		}
 		//$modal.modal('hide');
 	});

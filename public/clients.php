@@ -1,129 +1,112 @@
 <?php
 
-
     // configuration
     require("../includes/config.php");
     $table = null;
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+      echo '<script src="js/demo.js"></script>';
+
 
       if (empty($_POST["nom_parent"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le nom_parent  s.v.p');
-        </script>";
+        echo "Veillez entrer le nom_parent  s.v.p <br>";
         exit;
       }
       else if (empty($_POST["Age"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le Age  s.v.p');
-        </script>";
+        echo "Veillez entrer le age  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["genre"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le genre  s.v.p');
-        </script>";
+        echo "Veillez entrer le genre  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["etat_civil"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le etat_civil  s.v.p');
-        </script>";
+        echo "Veillez entrer le etat civil  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["Telephone"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le Telephone  s.v.p');
-        </script>";
+        echo "Veillez entrer le telephone  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["Fonction"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le Fonction  s.v.p');
-        </script>";
+        echo "Veillez entrer le fonction  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["Adresse"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le Adresse  s.v.p');
-        </script>";
+        echo "Veillez entrer le adress  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["niv_rev"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le niv_rev  s.v.p');
-        </script>";
+        echo "Veillez entrer le Niveau revnue  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["taille_menage"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le taille_menage  s.v.p');
-        </script>";
+        echo "Veillez entrer le taille_menage  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["t_m_g"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le t_m_g  s.v.p');
-        </script>";
+        echo "Veillez entrer le t_m_g  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["t_m_f"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le t_m_f  s.v.p');
-        </script>";
+        echo "Veillez entrer le t_m_f  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["enf_sco"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le enf_sco  s.v.p');
-        </script>";
+        echo "Veillez entrer le enf_sco  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["enf_sco_g"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le enf_sco_g  s.v.p');
-        </script>";
+        echo "Veillez entrer le enf_sco_g  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["enf_sco_f"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le enf_sco_f  s.v.p');
-        </script>";
+        echo "Veillez entrer le enf_sco_f  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["enf_zsa"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le enf_zsa  s.v.p');
-        </script>";
+        echo "Veillez entrer le enf_zsa  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["enf_zsa_g"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le enf_zsa_g  s.v.p');
-        </script>";
+        echo "Veillez entrer le enf_zsa_g  s.v.p <br>";
+
         exit;
       }
       else if (empty($_POST["enf_zsa_f"]))
       {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','Veillez entrer le enf_zsa_f  s.v.p');
-        </script>";
+        echo "Veillez entrer le enf_zsa_f  s.v.p <br>";
+
         exit;
       }
 
@@ -145,6 +128,8 @@
 // enf_zsa_g =
 // enf_zsa_f =
 
+      //echo "INSERT INTO parent_tab (nom_parent,Age,genre,etat_civil,Telephone,Fonction,Adresse,niv_rev,taille_menage,t_m_g,t_m_f,
+        //enf_sco,enf_sco_g,enf_sco_f,enf_zsa,enf_zsa_g,enf_zsa_f) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
       // query database for user
       $rows = query("SELECT * FROM parent_tab WHERE  nom_parent = ? or Telephone = ?", $_POST["nom_parent"], $_POST["Telephone"]);
@@ -157,24 +142,19 @@
           $_POST["enf_sco_g"],$_POST["enf_sco_f"],$_POST["enf_zsa"],$_POST["enf_zsa_g"],$_POST["enf_zsa_f"]
            )=== false)
         {
-            echo "<script  type=text/javascript>
-            guy.showNotificationerror('top','right','une erreur inatendue');
-            </script>";
+            echo "Erreur <br>";
+
             exit;
         }
         else {
-          $table = query("SELECT * FROM parent_tab ");
-            echo "<script  type=text/javascript>
-            guy.showNotificationSucces('top','right','<b> ".$_POST["nom_parent"]." - </b> ajouté avec success');
-            </script>";
+          //$table = query("SELECT * FROM parent_tab ");
+            echo "ok";
+
             exit;
         }
 
       }
       else {
-        echo "<script  type=text/javascript>
-        guy.showNotificationerror('top','right','<b> Erreur - </b> Ce client existe dans la base des données');
-        </script>";
         exit;
       }
     }

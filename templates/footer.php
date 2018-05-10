@@ -15,7 +15,7 @@
 <!--  Google Maps Plugin    -->
 <script src="js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="js/demo.js"></script>
+<script src="js/demo1.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 
 <script src="js/footable.min.js"></script>
