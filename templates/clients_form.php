@@ -135,12 +135,12 @@
                                     </a>
                                 </li> -->
 
-                                <li class="">
+                                <!-- <li class="">
                                     <a href="#modification" data-toggle="tab">
                                         <i class="material-icons">edit</i> Modifier Clients
                                         <div class="ripple-container"></div>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -630,52 +630,6 @@
 
                         </div>
 
-                        <div class="tab-pane" id="modification">
-
-
-                          <div class="row">
-                                          <div class="col-md-3"></div>
-                                        <div class="col-md-6">
-
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Selectionner clients</label>
-
-                                                    <select type="text" class="form-control">
-                                                      <option></option>
-                                                      <option>123</option>
-                                                      <option>456</option>
-                                                      <option>789</option>
-                                                      <option>111</option>
-
-                                                    </select>
-                                                <span class="material-input"></span><span class="material-input"></span></div>
-                                        </div>
-                                        <div class="col-md-3"></div>
-                          </div>
-                          <div class="row">
-                                          <div class="col-md-3"></div>
-                                        <div class="col-md-6">
-
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Nom clients</label>
-                                                    <input type="text" class="form-control">
-                                                <span class="material-input"></span><span class="material-input"></span></div>
-                                        </div>
-                                        <div class="col-md-3"></div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                              <div class="form-group label-floating is-empty">
-                                  <label class="control-label">Address mail</label>
-                                  <input type="text" class="form-control">
-                              <span class="material-input"></span><span class="material-input"></span></div>
-                              </div>
-                              <div class="col-md-3"></div>
-                          </div>
-                          <a href="#pablo" class="btn btn-primary btn-round" style="margin:  auto;display:  table;">
-                            MODIFIER<div class="ripple-container"></div></a>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -27,6 +27,21 @@ CREATE TABLE  if not EXISTS parent_tab
 	code_zsa varchar(10)
 );
 
+CREATE TABLE  if not EXISTS eleve_tab
+(
+	id_e int not null primary key auto_increment,
+	nom_eleve varchar(30) not null,
+	Age int not null,
+	genre varchar(30) not null,
+	matricule varchar(100) not null,
+	degre varchar(30) not null,
+	class int not null,
+	id_parent int not null,
+	id_ecole int not null,
+	FOREIGN KEY (`id_parent`) REFERENCES `parent_tab` (`id_c`)
+
+);
+
 CREATE TABLE  if not EXISTS user
 (
 	id_u int not null primary key auto_increment,
