@@ -183,7 +183,7 @@
                 												<tbody>
                                           <?php
                                               $id = 1;
-                                            foreach ($table as $row)
+                                            foreach ($table_parent as $row)
                                               {
                                                   echo("<tr data-expanded='false'>");
                                                   echo("<td>" . $id . "</td>");
@@ -408,50 +408,32 @@
                                       <thead>
                                       <tr>
                                         <th data-name="elev_id" data-breakpoints="xs" data-type="number">ID</th>
-                                        <th data-name="elev_nom_parent">Nom du parent</th>
-                                        <th data-name="elev_Age" data-breakpoints="xs sm md lg">Age</th>
-                                        <th data-name="elev_genre" data-breakpoints="xs sm md lg">Genre</th>
-                                        <th data-name="elev_etat_civil" data-breakpoints="xs sm md lg">Etat civil</th>
-                                        <th data-name="elev_Telephone">Telephone</th>
-                                        <th data-name="elev_Fonction" data-breakpoints="xs sm md lg">Fonction</th>
-                                        <th data-name="elev_Adresse" data-breakpoints="xs sm md lg">Adresse</th>
-                                        <th data-name="elev_niv_rev">Revenue</th>
-                                        <th data-name="elev_taille_menage">Taille menage</th>
-                                        <th data-name="elev_t_m_g" data-breakpoints="xs sm md lg">Garçons menage</th>
-                                        <th data-name="elev_t_m_f" data-breakpoints="xs sm md lg">Filles menage</th>
-                                        <th data-name="elev_enf_sco">Enfants scolarisés</th>
-                                        <th data-name="elev_enf_sco_g" data-breakpoints="xs sm md lg">Garçons scolarisés</th>
-                                        <th data-name="elev_enf_sco_f" data-breakpoints="xs sm md lg">Filles scolarisées</th>
-                                        <th data-name="elev_enf_zsa">Enfant zsa</th>
-                                        <th data-name="elev_enf_zsa_g" data-breakpoints="xs sm md lg">Garçons ZSA</th>
-                                        <th data-name="elev_enf_zsa_f" data-breakpoints="xs sm md lg">FILLES zsa</th>
-                                        <th data-name="elev_code_zsa" >Code zsa</th>
+                                        <th data-name="elev_nom_eleve">Nom eleve</th>
+                                        <th data-name="elev_Age" data-breakpoints1="xs sm md lg">Age</th>
+                                        <th data-name="elev_genre" data-breakpoints1="xs sm md lg">Genre</th>
+                                        <th data-name="elev_matricule" data-breakpoints1="xs sm md lg">Matricule</th>
+                                        <th data-name="elev_degre">Degré</th>
+                                        <th data-name="elev_class" data-breakpoints1="xs sm md lg">Classe</th>
+                                        <th data-name="elev_id_parent" data-breakpoints1="xs sm md lg">Parent</th>
+                                        <th data-name="elev_id_ecole">Ecole</th>
+
                                       </tr>
                                       </thead>
                                       <tbody>
                                         <?php
                                             $id = 1;
-                                          foreach ($table as $row)
+                                          foreach ($table_eleve as $row)
                                             {
                                                 echo("<tr data-expanded='false'>");
                                                 echo("<td>" . $id . "</td>");
-                                                echo("<td>" . $row["nom_parent"] . "</td>");
+                                                echo("<td>" . $row["nom_eleve"] . "</td>");
                                                 echo("<td>" . $row["Age"] . "</td>");
                                                 echo("<td>" . $row["genre"] . "</td>");
-                                                echo("<td>" . $row["etat_civil"] . "</td>");
-                                                echo("<td>" . $row["Telephone"] . "</td>");
-                                                echo("<td>" . $row["Fonction"] . "</td>");
-                                                echo("<td>" . $row["Adresse"] . "</td>");
-                                                echo("<td>" . $row["niv_rev"] . "</td>");
-                                                echo("<td>" . $row["taille_menage"] . "</td>");
-                                                echo("<td>" . $row["t_m_g"] . "</td>");
-                                                echo("<td>" . $row["t_m_f"] . "</td>");
-                                                echo("<td>" . $row["enf_sco"] . "</td>");
-                                                echo("<td>" . $row["enf_sco_g"] . "</td>");
-                                                echo("<td>" . $row["enf_sco_f"] . "</td>");
-                                                echo("<td>" . $row["enf_zsa"] . "</td>");
-                                                echo("<td>" . $row["enf_zsa_g"] . "</td>");
-                                                echo("<td>" . $row["enf_zsa_f"] . "</td>");
+                                                echo("<td>" . $row["matricule"] . "</td>");
+                                                echo("<td>" . $row["degre"] . "</td>");
+                                                echo("<td>" . $row["class"] . "</td>");
+                                                echo("<td>" . $row["id_parent"] . "</td>");
+                                                echo("<td>" . $row["id_ecole"] . "</td>");
 
                                                 echo("</tr>");
                                                 $id++;

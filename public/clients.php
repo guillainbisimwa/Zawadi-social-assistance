@@ -139,8 +139,9 @@
     }
     else
     {
-        $table = query("SELECT * FROM parent_tab ");
-    render("clients_form.php", ["title" => "Enregistrer un client","table" => $table]);
+      $table_parent = query("SELECT * FROM parent_tab ");
+      $table_eleve = query("SELECT * FROM eleve_tab ");
+    render("clients_form.php", ["title" => "Enregistrer un client","table_parent" => $table_parent,"table_eleve" => $table_eleve]);
 	}
 
 
