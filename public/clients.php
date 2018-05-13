@@ -123,7 +123,7 @@
           $_POST["enf_sco_g"],$_POST["enf_sco_f"],$_POST["enf_zsa"],$_POST["enf_zsa_g"],$_POST["enf_zsa_f"]
            )=== false)
         {
-            echo "Erreur <br>";
+            echo "Une Erreur est survenue <br>";
             exit;
         }
         else {

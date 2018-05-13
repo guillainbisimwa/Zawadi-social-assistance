@@ -28,32 +28,17 @@ $(function () {
 
 
 				$editor.find('#elev_id').val(values.id);
-				$editor.find("#elev_nom_parent1").val(values.nom_parent);
+				$editor.find("#elev_nom_eleve").val(values.nom_parent);
 				$editor.find("#elev_Age").val(values.Age);
 				$editor.find("#elev_genre").val(values.genre);
-				$editor.find("#elev_etat_civil").val(values.etat_civil);
-				$editor.find("#elev_Telephone").val(values.Telephone);
-				$editor.find("#elev_Fonction").val(values.Fonction);
-				$editor.find("#elev_Adresse").val(values.Adresse);
-				$editor.find("#elev_niv_rev").val(values.niv_rev);
-				$editor.find("#elev_taille_menage").val(values.taille_menage);
-				$editor.find("#elev_t_m_g").val(values.t_m_g);
-				$editor.find("#elev_t_m_f").val(values.t_m_f);
-				$editor.find("#elev_enf_sco").val(values.enf_sco);
-				$editor.find("#elev_enf_sco_g").val(values.enf_sco_g);
-				$editor.find("#elev_enf_sco_f").val(values.enf_sco_f);
-				$editor.find("#elev_enf_zsa").val(values.enf_zsa);
-				$editor.find("#elev_enf_zsa_g").val(values.enf_zsa_g);
-				$editor.find("#elev_enf_zsa_f").val(values.enf_zsa_f);
-
-				// $editor.find('#elev_firstName').val(values.firstName);
-				// $editor.find('#elev_lastName').val(values.lastName);
-				// $editor.find('#elev_jobTitle').val(values.jobTitle);
-				// $editor.find('#elev_startedOn').val(values.startedOn);
-				// $editor.find('#elev_dob').val(values.dob);
+				$editor.find("#elev_matricule").val(values.etat_civil);
+				$editor.find("#elev_degre").val(values.Telephone);
+				$editor.find("#elev_class").val(values.Fonction);
+				$editor.find("#elev_id_parent").val(values.Adresse);
+				$editor.find("#elev_id_ecole").val(values.niv_rev);
 
 				$modal.data('row', row);
-				$editorTitle.text('Modification #elev_' + values.id);
+				$editorTitle.text('Modification #' + values.id);
 				$modal.modal('show');
 			},
 			deleteRow: function(row){
@@ -71,50 +56,33 @@ $(function () {
 		var row = $modal.data('row'),
 			values = {
 
-				nom_parent : $editor.find("#elev_nom_parent1").val(),
-				Age : $editor.find("#elev_Age").val(),
-				genre : $editor.find("#elev_genre").val(),
-				etat_civil : $editor.find("#elev_etat_civil").val(),
-				Telephone : $editor.find("#elev_Telephone").val(),
-				Fonction : $editor.find("#elev_Fonction").val(),
-				Adresse : $editor.find("#elev_Adresse").val(),
-				niv_rev : $editor.find("#elev_niv_rev").val(),
-				taille_menage : $editor.find("#elev_taille_menage").val(),
-				t_m_g : $editor.find("#elev_t_m_g").val(),
-				t_m_f : $editor.find("#elev_t_m_f").val(),
-				enf_sco : $editor.find("#elev_enf_sco").val(),
-				enf_sco_g : $editor.find("#elev_enf_sco_g").val(),
-				enf_sco_f : $editor.find("#elev_enf_sco_f").val(),
-				enf_zsa : $editor.find("#elev_enf_zsa").val(),
-				enf_zsa_g : $editor.find("#elev_enf_zsa_g").val(),
-				enf_zsa_f : $editor.find("#elev_enf_zsa_f").val()
+				elev_nom_eleve : $editor.find("#elev_nom_eleve").val(),
+				elev_Age : $editor.find("#elev_Age").val(),
+				elev_genre : $editor.find("#elev_genre").val(),
+				elev_matricule : $editor.find("#elev_matricule").val(),
+				elev_degre : $editor.find("#elev_degre").val(),
+				elev_class : $editor.find("#elev_class").val(),
+				elev_id_parent : $editor.find("#elev_id_parent").val(),
+				elev_id_ecole : $editor.find("#elev_id_ecole").val()
 			};
 
-			var _id = values.id;
-			var _nom_parent = values.nom_parent;
-			var _Age = values.Age;
-			var _genre = values.genre;
-			var _etat_civil = values.etat_civil;
-			var _Telephone = values.Telephone;
-			var _Fonction = values.Fonction;
-			var _Adresse = values.Adresse;
-			var _niv_rev = values.niv_rev;
-			var _taille_menage = values.taille_menage;
-			var _t_m_g = values.t_m_g;
-			var _t_m_f = values.t_m_f;
-			var _enf_sco = values.enf_sco;
-			var _enf_sco_g = values.enf_sco_g;
-			var _enf_sco_f = values.enf_sco_f;
-			var _enf_zsa = values.enf_zsa;
-			var _enf_zsa_g = values.enf_zsa_g;
-			var _enf_zsa_f = values.enf_zsa_f;
+			var _elev_id = values.elev_id;
+			var _elev_nom_eleve = values.elev_nom_eleve;
+			var _elev_Age = values.elev_Age;
+			var _elev_genre = values.elev_genre;
+			var _elev_matricule = values.elev_matricule;
+			var _elev_degre = values.elev_degre;
+			var _elev_class = values.elev_class;
+			var _elev_id_parent = values.elev_id_parent;
+			var _elev_id_ecole = values.elev_id_ecole;
+
 
 		if (row instanceof FooTable.Row){
 			//row.val(values);
 			//ajax submit update
 			$.ajax({
 					 type: "POST",
-					 url: "clients.php",
+					 url: "eleves.php",
 					 data:{id : "0"},
 					 success: function(data) {
 							 row.val(values);
@@ -124,26 +92,17 @@ $(function () {
 		} else {
 			//ajax submit create
 			$.ajax({
-        url:"clients.php",
+        url:"eleves.php",
         type:"post",
         data:{
-          nom_parent : _nom_parent,
-          Age : _Age,
-          genre : _genre,
-          etat_civil : _etat_civil,
-          Telephone : _Telephone,
-          Fonction : _Fonction,
-          Adresse : _Adresse,
-          niv_rev : _niv_rev,
-          taille_menage : _taille_menage,
-          t_m_g : _t_m_g,
-          t_m_f : _t_m_f,
-          enf_sco : _enf_sco,
-          enf_sco_g : _enf_sco_g,
-          enf_sco_f : _enf_sco_f,
-          enf_zsa : _enf_zsa,
-          enf_zsa_g : _enf_zsa_g,
-          enf_zsa_f : _enf_zsa_f
+          elev_nom_eleve : _elev_nom_eleve,
+          elev_Age : _elev_Age,
+          elev_genre : _elev_genre,
+          elev_matricule : _elev_matricule,
+          elev_degre : _elev_degre,
+          elev_class : _elev_class,
+          elev_id_parent : _elev_id_parent,
+          elev_id_ecole : _elev_id_ecole
         },
         success : function(data)
         {

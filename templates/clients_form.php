@@ -414,7 +414,7 @@
                                         <th data-name="elev_matricule" data-breakpoints1="xs sm md lg">Matricule</th>
                                         <th data-name="elev_degre">Degré</th>
                                         <th data-name="elev_class" data-breakpoints1="xs sm md lg">Classe</th>
-                                        <th data-name="elev_id_parent" data-breakpoints1="xs sm md lg">Parent</th>
+                                        <th data-name="elev_id_parent" data-breakpoints="xs sm md lg">Parent</th>
                                         <th data-name="elev_id_ecole">Ecole</th>
 
                                       </tr>
@@ -424,6 +424,7 @@
                                             $id = 1;
                                           foreach ($table_eleve as $row)
                                             {
+                                                
                                                 echo("<tr data-expanded='false'>");
                                                 echo("<td>" . $id . "</td>");
                                                 echo("<td>" . $row["nom_eleve"] . "</td>");
@@ -449,143 +450,107 @@
                                       <form class="modal-content form-horizontal" id="elev_editor">
                                         <div class="modal-header">
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                          <h5 class="modal-title" id="elev_editor-title">Ajouter un parent</h5>
+                                          <h5 class="modal-title" id="elev_editor-title">Ajouter un Elève</h5>
                                         </div>
                                         <div class="modal-body">
                                           <input type="number" id="elev_id" name="id" class="hidden"/>
 
                                           <div class="form-group1 required1">
-                                            <div class="col-md-6">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Nom complet du parent:</label>
-                                                        <input id="elev_nom_parent1" name="nom_parent" type="text" class="form-control" autocomplete="off">
-                                                    <span class="material-input"></span></div>
-                                            </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group label-floating is-empty">
+                                                <label class="control-label">Nom du parent</label>
+                                                <select class="form-control" id="elev_id_parent" name="elev_id_parent" placeholder="Nom du parent" required>
+                                                  <option></option>
+                                                  <?php
+                                                    foreach ($table_parent as $row)
+                                                    {
+                                                      $id_p = $row["id_c"];
+                                                      echo("<option value='$id_p'>" . $row["nom_parent"] . "</option>");
+                                                    }
+                                                  ?>
 
-                                            <div class="col-sm-2">
+                                                </select>
+                                              <span class="material-input"></span>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-6">
+                                            <div class="form-group label-floating is-empty">
+                                                <label class="control-label">Ecole</label>
+                                                <select class="form-control" id="elev_id_ecole" name="elev_id_ecole" placeholder="Ecole" required>
+                                                  <option></option>
+                                                  <option value="1">EP MATUNDA 1</option>
+                                                  <option value="2">EP MATUNDA 2</option>
+                                                  <option value="3">EP SABINYO</option>
+                                                  <option value="4">EP MONT CARMEL</option>
+                                                </select>
+                                              <span class="material-input"></span>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-6">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Nom complet de l'Elève:</label>
+                                                      <input id="elev_nom_eleve" name="elev_nom_eleve" type="text" class="form-control" autocomplete="off">
+                                                  <span class="material-input"></span></div>
+                                          </div>
+
+                                          <div class="col-md-6">
+                                                  <div class="form-group label-floating is-empty">
+                                                      <label class="control-label">Matricule:</label>
+                                                      <input id="elev_matricule" name="elev_matricule" type="text" class="form-control" autocomplete="off">
+                                                  <span class="material-input"></span></div>
+                                          </div>
+
+
+
+                                            <div class="col-sm-3">
                                               <div class="form-group label-floating is-empty">
                                                   <label class="control-label">Age</label>
                                                   <input id="elev_Age" type="text" class="form-control">
                                               <span class="material-input"></span></div>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                               <div class="form-group label-floating is-empty">
                                                   <label class="control-label">Genre</label>
-                                                  <select class="form-control" id="elev_genre" name="genre" placeholder="genre" required>
+                                                  <select class="form-control" id="elev_genre" name="elev_genre" placeholder="" required>
                                                     <option></option>
                                                     <option>F</option>
                                                     <option>M</option>
                                                   </select>
-                                              <span class="material-input"></span></div>
+                                                <span class="material-input"></span>
+                                              </div>
                                             </div>
 
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                               <div class="form-group label-floating is-empty">
-                                                  <label class="control-label">Etat civil</label>
-                                                  <select class="form-control" id="elev_etat_civil" name="etat_civil" required>
+                                                  <label class="control-label">Classe</label>
+                                                  <select class="form-control" id="elev_class" name="elev_class" required>
                                                     <option></option>
-                                                    <option>M</option>
-                                                    <option>C</option>
-                                                    <option>D</option>
-                                                    <option>V</option>
+                                                    <option value="1">1 ere</option>
+                                                    <option value="2">2 eme</option>
+                                                    <option value="3">3 eme</option>
+                                                    <option value="4">4 eme</option>
+                                                    <option value="5">5 eme</option>
+                                                    <option value="6">6 eme</option>
                                                   </select>
                                               <span class="material-input"></span></div>
                                             </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-sm-6">
-                                              <div class="col-m-12">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Telephone</label>
-                                                    <input id="elev_Telephone" name="Telephone" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-
-                                              <div class="col-m-12">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Fonction</label>
-                                                    <input id="elev_Fonction" name="Fonction" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-
-                                              <div class="col-m-12">
-                                                 <!-- <div class="form-group required">
-                                                    <textarea class="form-control" placeholder="Adresse" rows="4" ></textarea>
-                                                  </div> -->
-                                                  <div class="form-group label-floating is-empty">
-                                                      <label class="control-label">Adresse</label>
-                                                      <textarea class="form-control" id="elev_Adresse" name="Adresse" rows="4" ></textarea>
-                                                  <span class="material-input"></span></div>
-                                              </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                              <div class="col-sm-12">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Niveau de revenue / mois</label>
-                                                    <input id="elev_niv_rev" name="niv_rev" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Taille menage</label>
-                                                    <input id="elev_taille_menage" name="taille_menage" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Garcons</label>
-                                                    <input id="elev_t_m_g" name="t_m_g" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Filles</label>
-                                                    <input id="elev_t_m_f" name="t_m_f" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Enfants scolarisés</label>
-                                                    <input id="elev_enf_sco" name="enf_sco" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Garcons</label>
-                                                    <input id="elev_enf_sco_g" name="enf_sco_g" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Filles</label>
-                                                    <input id="elev_enf_sco_f" name="enf_sco_f" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Enfants au ZSA</label>
-                                                    <input id="elev_enf_zsa" name="enf_zsa" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Garcons</label>
-                                                    <input id="elev_enf_zsa_g" name="enf_zsa_g" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
-                                              </div>
-                                              <div class="col-sm-4">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Filles</label>
-                                                    <input id="elev_enf_zsa_f" name="enf_zsa_f" type="text" class="form-control">
-                                                <span class="material-input"></span></div>
+                                            <div class="col-sm-3">
+                                              <div class="form-group label-floating is-empty">
+                                                  <label class="control-label">Degré</label>
+                                                  <select class="form-control" id="elev_degre" name="elev_degre" placeholder="Degré" required>
+                                                    <option></option>
+                                                    <option>ELEMENTAIRE</option>
+                                                    <option>MOYEN</option>
+                                                    <option>SUPPERIEUR</option>
+                                                  </select>
+                                                <span class="material-input"></span>
                                               </div>
                                             </div>
                                           </div>
+
+
                                           <div id="elev_affreslt_aut2">000</div>
 
                                         </div>
