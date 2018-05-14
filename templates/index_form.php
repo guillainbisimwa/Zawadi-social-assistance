@@ -151,11 +151,12 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Elèves </p>
-                    <h3 class="title">00</h3>
+                    <h3 class="title"><?php echo $count_eleve[0]["nbr"]; ?></h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons">local_offer</i> Filles et garçons
+                        <i class="material-icons">local_offer</i> <?php echo $count_eleve_f[0]["nbr"]; ?> Filles
+                        et <?php echo $count_eleve_g[0]["nbr"]; ?> garçons
                     </div>
                 </div>
             </div>
@@ -167,7 +168,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Abonnés</p>
-                    <h3 class="title">00</h3>
+                    <h3 class="title"><?php echo $count_parent[0]["nbr"]; ?></h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
