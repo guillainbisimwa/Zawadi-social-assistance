@@ -31,9 +31,9 @@
         </a>
     </li>
     <li>
-        <a href="vente.php">
+        <a href="tontine.php">
             <i class="material-icons">content_paste</i>
-            <p>SMS Viwer</p>
+            <p>Tontine</p>
         </a>
     </li>
     <li>
@@ -424,7 +424,7 @@
                                             $id = 1;
                                           foreach ($table_eleve as $row)
                                             {
-                                                
+
                                                 echo("<tr data-expanded='false'>");
                                                 echo("<td>" . $id . "</td>");
                                                 echo("<td>" . $row["nom_eleve"] . "</td>");

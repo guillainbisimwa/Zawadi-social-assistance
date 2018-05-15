@@ -7,7 +7,7 @@
 
 ?>
 <ul class="nav" >
-    <li class="active">
+    <li >
         <a href="index.php">
             <i class="material-icons">dashboard</i>
             <p>TABLEAU DE BORD</p>
@@ -19,7 +19,7 @@
             <p>Assistance Scolaire</p>
         </a>
     </li>
-    <li>
+    <li class="active">
         <a href="assistance_ped.php">
             <i class="material-icons">person</i>
             <p>Assistance pedagogique</p>
@@ -62,7 +62,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"> TABLEAU DE BORD</a>
+        <a class="navbar-brand text-uppercase" href="#">
+          <?php if (isset($title)): ?>
+              <?= htmlspecialchars($title) ?>
+          <?php else: ?>
+            ZAWADI SOCIAL ASSISTANCE
+          <?php endif ?></a>
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -108,75 +113,20 @@
 <div class="content">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-header" data-background-color="orange">
-                    <i class="material-icons">content_copy</i>
+
+          <div class="col-lg-12 col-md-12">
+              <div class="card card-nav-tabs">
+                  <div class="card-header" data-background-color="purple">
+                    EN CONSTRUCTION
+                  </div>
+                  <div class="cons">
+                    <img src="img/best-cinemagraph-7.gif" />
+                  </div>
                 </div>
-                <div class="card-content">
-                    <p class="category">Somme</p>
-                    <h3 class="title">00,0
-                        <small>$</small>
-                    </h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons text-danger">warning</i>
-                        <a href="#pablo">Montant disponible</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-header" data-background-color="green">
-                    <i class="material-icons">store</i>
-                </div>
-                <div class="card-content">
-                    <p class="category">Somme</p>
-                    <h3 class="title">$00,0
-                      <small>$</small></h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">date_range</i> Montant prêté
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-header" data-background-color="red">
-                    <i class="material-icons">person</i>
-                </div>
-                <div class="card-content">
-                    <p class="category">Elèves </p>
-                    <h3 class="title"><?php echo $count_eleve[0]["nbr"]; ?></h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">local_offer</i> <?php echo $count_eleve_f[0]["nbr"]; ?> Filles
-                        et <?php echo $count_eleve_g[0]["nbr"]; ?> garçons
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-header" data-background-color="blue">
-                    <i class="material-icons">info_outline</i>
-                </div>
-                <div class="card-content">
-                    <p class="category">Abonnés</p>
-                    <h3 class="title"><?php echo $count_parent[0]["nbr"]; ?></h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">update</i> orange Money
-                    </div>
-                </div>
-            </div>
-        </div>
+              </div>
+
+
+
     </div>
 
 

@@ -20,7 +20,7 @@
         </a>
     </li>
     <li class="active">
-        <a href="vente.php">
+        <a href="tontine\.php">
             <i class="material-icons">content_paste</i>
             <p>Vente</p>
         </a>
