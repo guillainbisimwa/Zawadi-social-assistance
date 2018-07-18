@@ -93,7 +93,7 @@
         </ul>
         <form class="navbar-form navbar-right" role="search">
             <div class="form-group  is-empty">
-                <input type="text" class="form-control" placeholder="Search">
+                <input autocomplete="off" type="text" class="form-control" placeholder="Search">
                 <span class="material-input"></span>
             </div>
             <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -222,20 +222,20 @@
                 														<h5 class="modal-title" id="editor-title">Ajouter un parent</h5>
                 													</div>
                 													<div class="modal-body">
-                														<input type="number" id="id" name="id" class="hidden"/>
+                														<input autocomplete="off" type="number" id="id" name="id" class="hidden"/>
 
                 														<div class="form-group1 required1">
                                               <div class="col-md-6">
                                                       <div class="form-group label-floating is-empty">
                                                           <label class="control-label">Nom complet du parent:</label>
-                                                          <input id="nom_parent1" name="nom_parent" type="text" class="form-control" autocomplete="off">
+                                                          <input autocomplete="off" id="nom_parent1" name="nom_parent" type="text" class="form-control" autocomplete="off">
                                                       <span class="material-input"></span></div>
                                               </div>
 
                                               <div class="col-sm-2">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label">Age</label>
-                                                    <input id="Age" type="text" class="form-control">
+                                                    <input autocomplete="off" id="Age" type="text" class="form-control">
                                                 <span class="material-input"></span></div>
                                               </div>
                                               <div class="col-sm-2">
@@ -268,14 +268,14 @@
                                                 <div class="col-m-12">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Telephone</label>
-                                                      <input id="Telephone" name="Telephone" type="text" class="form-control">
+                                                      <input autocomplete="off" id="Telephone" name="Telephone" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
 
                                                 <div class="col-m-12">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Fonction</label>
-                                                      <input id="Fonction" name="Fonction" type="text" class="form-control">
+                                                      <input autocomplete="off" id="Fonction" name="Fonction" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
 
@@ -294,64 +294,64 @@
                                                 <div class="col-sm-12">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Niveau de revenue / mois</label>
-                                                      <input id="niv_rev" name="niv_rev" type="text" class="form-control">
+                                                      <input autocomplete="off" id="niv_rev" name="niv_rev" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
 
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Taille menage</label>
-                                                      <input id="taille_menage" name="taille_menage" type="text" class="form-control">
+                                                      <input autocomplete="off" id="taille_menage" name="taille_menage" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Garcons</label>
-                                                      <input id="t_m_g" name="t_m_g" type="text" class="form-control">
+                                                      <input autocomplete="off" id="t_m_g" name="t_m_g" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Filles</label>
-                                                      <input id="t_m_f" name="t_m_f" type="text" class="form-control">
+                                                      <input autocomplete="off" id="t_m_f" name="t_m_f" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
 
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Enfants scolarisés</label>
-                                                      <input id="enf_sco" name="enf_sco" type="text" class="form-control">
+                                                      <input autocomplete="off" id="enf_sco" name="enf_sco" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Garcons</label>
-                                                      <input id="enf_sco_g" name="enf_sco_g" type="text" class="form-control">
+                                                      <input autocomplete="off" id="enf_sco_g" name="enf_sco_g" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Filles</label>
-                                                      <input id="enf_sco_f" name="enf_sco_f" type="text" class="form-control">
+                                                      <input autocomplete="off" id="enf_sco_f" name="enf_sco_f" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
 
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Enfants au ZSA</label>
-                                                      <input id="enf_zsa" name="enf_zsa" type="text" class="form-control">
+                                                      <input autocomplete="off" id="enf_zsa" name="enf_zsa" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Garcons</label>
-                                                      <input id="enf_zsa_g" name="enf_zsa_g" type="text" class="form-control">
+                                                      <input autocomplete="off" id="enf_zsa_g" name="enf_zsa_g" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Filles</label>
-                                                      <input id="enf_zsa_f" name="enf_zsa_f" type="text" class="form-control">
+                                                      <input autocomplete="off" id="enf_zsa_f" name="enf_zsa_f" type="text" class="form-control">
                                                   <span class="material-input"></span></div>
                                                 </div>
                                               </div>
@@ -453,7 +453,7 @@
                                           <h5 class="modal-title" id="elev_editor-title">Ajouter un Elève</h5>
                                         </div>
                                         <div class="modal-body">
-                                          <input type="number" id="elev_id" name="id" class="hidden"/>
+                                          <input autocomplete="off" type="number" id="elev_id" name="id" class="hidden"/>
 
                                           <div class="form-group1 required1">
                                           <div class="col-md-6">
@@ -491,14 +491,14 @@
                                           <div class="col-md-6">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Nom complet de l'Elève:</label>
-                                                      <input id="elev_nom_eleve" name="elev_nom_eleve" type="text" class="form-control" autocomplete="off">
+                                                      <input autocomplete="off" id="elev_nom_eleve" name="elev_nom_eleve" type="text" class="form-control" autocomplete="off">
                                                   <span class="material-input"></span></div>
                                           </div>
 
                                           <div class="col-md-6">
                                                   <div class="form-group label-floating is-empty">
                                                       <label class="control-label">Matricule:</label>
-                                                      <input id="elev_matricule" name="elev_matricule" type="text" class="form-control" autocomplete="off">
+                                                      <input autocomplete="off" id="elev_matricule" name="elev_matricule" type="text" class="form-control" autocomplete="off">
                                                   <span class="material-input"></span></div>
                                           </div>
 
@@ -507,7 +507,7 @@
                                             <div class="col-sm-3">
                                               <div class="form-group label-floating is-empty">
                                                   <label class="control-label">Age</label>
-                                                  <input id="elev_Age" type="text" class="form-control">
+                                                  <input autocomplete="off" id="elev_Age" type="text" class="form-control">
                                               <span class="material-input"></span></div>
                                             </div>
                                             <div class="col-sm-3">

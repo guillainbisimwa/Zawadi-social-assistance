@@ -1,0 +1,1591 @@
+Array
+(
+    [0] =>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Toutes les communications </title>
+		<script src="/assets/bootstrap-base-5b46cc62aaf8c49f01bb07a131b4f1ad.js" type="text/javascript" ></script>
+		<link rel="stylesheet" href="/assets/bootstrap-base-9c8ae89d12ef6633a042f4955b1684e1.css"/>
+		<script type="text/javascript" src="/assets/i18n/frontlinesms-core_messages-6109b5b19033bf849d1933721d8bfff7.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/assets/i18n/frontlinesms-core_messages_fr-5213bfbba410e75c124f28cdd6900bc5.js" charset="UTF-8"></script>
+
+
+
+		<link rel="stylesheet" href="/assets/twoColumnLayout-3d65d16d337e8f222522fb08414ee840.css"/>
+		<script src="/assets/twoColumnLayout-3bf50248721271b2ac905c85b2eb41f8.js" type="text/javascript" ></script>
+
+
+
+
+		<meta name="layout" content="interactions"/>
+		<meta name="interaction-section" content="All"/>
+		<meta name="interaction-tags" content=""/>
+
+			<link rel="stylesheet" href="/assets/interactions-f4e71f87b2ce8094c00b1c826bcf1f6e.css"/>
+			<link rel="stylesheet" href="/assets/notifications-c8816cbc27bd0e8a870e7b4305b804d7.css"/>
+			<script src="/assets/interactions-537c399341ee6c9b3477a41f667e3cea.js" type="text/javascript" ></script>
+			<script src="/assets/notifications-cfc2f4a653b898b7d67a7b98387c2160.js" type="text/javascript" ></script>
+
+
+
+
+
+
+
+
+
+			<script data-name="MessageComposer" type='text/x-handlebars-template' data-namespace='messaging'>
+	<div id="send_message_wrap">
+		<div class="frontline-bootstrap">
+	<div class="recipient-selector-container">
+		<div class="container-send_message">
+			<div id="send_message" class="dropdown"></div>
+		</div>
+	</div>
+</div>
+		<span class="multiselector-placeholder"><i class="fa fa-refresh fa-spin"></i> Chargement des contacts en cours…</span>
+		<span class="send-message-to-contacts"></span>
+		{{#if forwardMessageCount}}
+			<p class="forwarding-message-label"> {{forwardMessageCount}} message(s) seront transférés aux destinataires sélectionnés</p>
+		{{else}}
+			<div class="message-composer flang-compatible}"><textarea name="messageText" class="full-width flang-compatible}" placeholder="" rows="3" id="{{textAreaID}}" >{{messageText}}</textarea><div class="controls"><div class="character-count-display">0</div><br/><div class='dropdown'><button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-magic'></i></button><ul class='dropdown-menu pull-right' role='menu' aria-labelledby='dropdownMenu1'><li role='presentation' class='dropdown-header'>Magic Wand: select a dynamic variable to insert</li><li class='flang-magicwand-option' role='presentation' data-flang-expression='${recipient.nameOrMobile}'><a href='#'>Nom du destinataire </a></li><li class='flang-magicwand-option' role='presentation' data-flang-expression='${recipient.mobile}'><a href='#'>Numéro mobile du destinataire </a></li></ul></div></div><div class="clearfix"></div></div>
+		{{/if}}
+		<select name="sendThrough" valueToSet="{{sendThrough}}">
+			<option value="">Utiliser la configuration par défaut </option>
+			{{#each sendEnabledConnectionList}}
+				<option value="{{this.id}}">Utiliser  {{this.name}}</option>
+			{{/each}}
+		</select>
+		<span class="label-color" for="messageText">Pour l’envoi du message</span>
+		<button type="button" class="send btn btn-primary" title="Envoyer">
+			<span class='send'>Envoyer</span>
+			<span class='sending'>Envoi en cours <i class="fa fa-cog fa-spin"></i></span>
+			<span class='sent'>Envoyé</span>
+		</button>
+		<span class="thinking"></span>
+	</div>
+</script>
+
+
+			<script type='text/x-handlebars-template' data-name='FormatChooser' data-namespace='interaction_export'>
+	<div id="confirm-bulk-export-action">
+		<div class="frontline-bootstrap">
+			<p>Choisir un format pour le téléchargement</p>
+		</div>
+		<button id='interaction-export-csv-option' class='btn btn-default csv-export-button'>Exportation au format CSV </button>
+		<button id='interaction-export-pdf-option' class='btn btn-default pdf-export-button'>Exportation au format PDF </button>
+	</div>
+</script>
+<script type='text/x-handlebars-template' data-name='ExportStatus' data-namespace='interaction_export'>
+	<div class="export-status-message {{ extraClasses }}">{{ message }}</div>
+</script>
+
+
+			<script type='text/x-handlebars-template' data-name='RetrySendFailedSmsConfirmation' data-namespace='interaction_retry_send_failed_sms'>
+<div id="confirm-rety-send-failed-sms-action">
+    <div class="frontline-bootstrap">
+        {{#if resendAllFailed}}
+            <p>Are you sure you want to retry sending all the failed SMSs?</p>
+        {{else}}
+            <p>Are you sure you want to retry sending the {{numberSelected}} failed SMSs you selected?</p>
+        {{/if}}
+    </div>
+    <button id='interaction-retry-send-failed-sms'
+            class='btn btn-default interaction-retry-send-failed-sms-button'>
+        Retry Sending Failed SMSs
+    </button>
+</div>
+</script>
+<script type='text/x-handlebars-template' data-name='RetrySendFailedSmsStatus' data-namespace='interaction_retry_send_failed_sms'>
+    <div class="resend-status-message {{ extraClasses }}">{{ message }}</div>
+</script>
+			<script data-name="ConfirmBulkDeleteAction" type='text/x-handlebars-template' data-namespace='messaging'>
+	<div id="confirm-bulk-delete-action">
+		<div class="frontline-bootstrap">
+			<p>Êtes-vous sûr(e) de vouloir supprimer la sélection ? Pour abandonner la suppression
+    [1] =>  cliquer sur Annuler </p>
+		</div>
+		<div class="frontline-bootstrap">
+			<button id="bulk-action-delete-confirm" class="btn btn-default confirm">Interactions de suppression </button>
+			<button id="bulk-action-delete-cancel" class="btn btn-default confirm cancel">Annuler</button>
+		</div>
+	</div>
+</script>
+
+			<script data-name="ConfirmBulkRestoreAction" type='text/x-handlebars-template' data-namespace='messaging'>
+	<div id="confirm-bulk-restore-action">
+		<div class="frontline-bootstrap">
+			<p>Êtes-vous sûr(e) de vouloir restaurer la sélection ? Pour abandonner la restauration
+    [2] =>  cliquer sur Annuler </p>
+		</div>
+		<div class="frontline-bootstrap">
+			<button id="bulk-action-restore-confirm" class="btn btn-default confirm">Interactions de restauration </button>
+			<button id="bulk-action-restore-cancel" class="btn btn-default confirm cancel">Annuler</button>
+		</div>
+	</div>
+</script>
+
+			<script data-name='NewVersionInformationAndSettings' type='text/x-handlebars-template' data-namespace='versioning'>
+	<div id='new-features-content' class='help-content'>
+		<div id='help-textual-content'>
+		</div>
+		<div id='new-features-checkbox-set'>
+			<div class='ft'>
+				<label>
+					<input type='checkbox' name='checkLatestVersion' id='checkLatestVersion'/>
+					Tenez-moi au courant des nouvelles versions
+				</label>
+			</div>
+			<div class='ft'>
+				<label>
+					<input type='checkbox' name='sendAnonymousUserData' id='sendAnonymousUserData'/>
+					Envoi de statistiques anonymes d'utilisation pour contribuer à l’amélioration de FrontlineSMS
+				</label>
+			</div>
+			<div class='ft'>
+				<label>
+					<input type='checkbox' name='enableNewFeaturesSidebar' id='enableNewFeaturesSidebar' checked='checked'/>
+					Afficher cet encadré la prochaine fois
+				</label>
+			</div>
+		</div>
+		<div class="frontline-bootstrap">
+			<button id="save-app-settings-options" class="btn btn-primary">Enregistrer</button>
+		</div>
+	</div>
+</script>
+
+			<script type='text/x-handlebars-template' data-name='TriggerEvent' data-namespace='recipeCollections'>
+	<li class="recipe-event list-group-item">
+		<span class="trigger-type {{triggerType}}"></span>
+		<span class="date">{{formattedDate}}</span>
+		{{#if isTimeTrigger}}
+			<span class="contact">
+			Triggered on schedule
+			</span>
+			<span class="messageText">
+			</span>
+		{{else}}
+		<span class="contact">
+			{{#if inbound}}
+				Exp. :
+			{{else}}
+				Dest. :
+			{{/if}}
+			{{#if contactId}}
+				<a href='{{url_root}}contact/show/{{contactId}}'>{{contactDisplayName}}</a>
+			{{else}}
+				{{contactDisplayName}}
+			{{/if}}
+		</span>
+		<span class="message-text">
+			<a href='{{url_root}}interaction/show?interactionId={{triggerId}}'>
+			{{#if messageText}}
+				'{{messageText}}'
+			{{else}}
+				{{#ifEquals triggerType "INCOMING_API_REQUEST"}}
+					View Incoming Api Request in Inbox
+				{{/ifEquals}}
+				{{#ifEquals triggerType "PAYMENT"}}
+					Amount <strong>{{prettifiedPaymentAmount}}</strong> with M-PESA Reference <strong>{{paymentMpesaReference}}</strong> and Confirmation Date <strong>{{paymentMpesaConfirmationDate}}</strong>
+				{{/ifEquals}}
+				{{#ifEquals triggerType "FIRE"}}
+					View this Fire interaction in the Inbox
+				{{/ifEquals}}
+				{{#ifEquals triggerType "MISSED_CALL"}}
+					Afficher l'appel manqué dans la boîte de réception
+				{{/ifEquals}}
+			{{/if}}
+			</a>
+		</span>
+		{{/if}}
+		<ul class="rule-events hidden"></ul>
+		<ul class="action-events hidden"></ul>
+		<span class="expand-state">
+			<i class="fa fa-expand"></i>
+		</span>
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='RecipeEvent' data-namespace='recipeCollections'>
+	<li class="recipe-event list-group-item">
+		<span class="date">{{formattedDate}}</span>
+		<span class="recipeName">
+			<strong>{{recipeName}}</strong>
+		</span>
+		<ul class="rule-events hidden"></ul>
+		<ul class="action-events hidden"></ul>
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='SendMessageActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-envelope-o"></i>
+		<i class="fa fa-paper-plane-o"></i>
+		{{sendMessageActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='SendPaymentActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-dollar"></i>
+		<i class="fa fa-paper-plane-o"></i>
+		{{sendPaymentActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='AddTagActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-tags"></i>
+		{{addTagActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='AddErrorTagActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-tags"></i>
+		{{addErrorTagActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='AddToGroupActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-group"></i>
+		<i class="fa fa-plus"></i>
+		{{addToGroupActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='RemoveFromGroupActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-group"></i>
+		<i class="fa fa-minus"></i>
+		{{removeFromGroupActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='ActivityToRecipeCollectionMigrationActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-step-forward"></i>
+		{{activityToRecipeCollectionMigrationActionEventInfo}}
+		Migration de l’ancien moteur d’activité de FrontlineSMS
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='UploadActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-upload"></i>
+		{{#if this.uploaded}}
+			<i class="fa fa-paper-plane-o"></i>
+		{{else}}
+			<i class="fa fa-exclamation"></i>
+		{{/if}}
+		{{uploadActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='UpdateContactFieldActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-user"></i>
+		<i class="fa fa-pencil-square-o"></i>
+		{{updateContactFieldActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='CustomFieldBooleanActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-user"></i>
+		<i class="fa fa-pencil-square-o"></i>
+		{{customFieldBooleanActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='CustomFieldIntegerActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-user"></i>
+		<i class="fa fa-pencil-square-o"></i>
+		{{customFieldIntegerActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='UpdateDateCustomFieldActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-user"></i>
+		<i class="fa fa-pencil-square-o"></i>
+		{{updateDateCustomFieldActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='TriggerRecipeActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-cutlery"></i>
+		<i class="fa fa-paper-plane"></i>
+		{{triggerRecipeActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='UploadJSONActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-upload"></i>
+		{{#if this.uploaded}}
+			<i class="fa fa-paper-plane-o"></i>
+		{{else}}
+			<i class="fa fa-exclamation"></i>
+		{{/if}}
+		{{uploadJSONActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='CustomFieldCurrencyActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-user"></i>
+		<i class="fa fa-pencil-square-o"></i>
+		{{customFieldCurrencyActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='UpdateUserDataActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="{{#if passed}}passed{{else}}failed{{/if}}">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-pencil-square-o"></i>
+		{{updateUserDataActionEventInfo}}
+	</li>
+</script>
+<script type='text/x-handlebars-template' data-name='FailedActionEvent' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="exception">
+		<i class="fa fa-angle-right"></i>
+		<i class="fa fa-exclamation-triangle"></i>
+		{{failedActionEventInfo}}
+	</li>
+</script>
+
+<!-- RULE EVENTS -->
+<script type='text/x-handlebars-template' data-name='RuleEventTemplate' data-namespace='recipeCollections'>
+	{{#if multiRecipientRule}}
+		<li data-classname="{{this.className}}" class="rule-event rule-event-recipient-list-toggle-visibility" data-rule-event-id="{{eventId}}" title="show details">
+	{{else}}
+		<li data-classname="{{this.className}}" class="rule-event">
+	{{/if}}
+			{{#if passed}}
+				<i class="fa fa-check"></i>
+			{{else}}
+				<i class="fa fa-close"></i>
+			{{/if}}
+			{{displayRuleEventInfo}}
+			{{#if multiRecipientRule}}
+				<i class="fa fa-expand rule-recipient-list-expander hidden text-primary"></i>
+				<ul class="rule-event-recipient-info-container rule-event-recipient-info-container-{{eventId}} hidden">
+					<span class="loading-indicator hidden"><i class="fa fa-refresh fa-spin"></i></span>
+				</ul>
+			{{/if}}
+		</li>
+</script>
+
+<script type='text/x-handlebars-template' data-name='RuleEventRecipientInfoTemplate' data-namespace='recipeCollections'>
+	<li data-classname="{{this.className}}" class="rule-event-recipient-info {{#if passed}}passed{{else}}failed{{/if}}" title="hide details">
+		{{#if passed}}
+			<i class="fa fa-check"></i>
+		{{else}}
+			<i class="fa fa-close"></i>
+		{{/if}}
+		<span>{{displayRuleEventInfo}}</span>
+	</li>
+</script>
+
+
+
+
+
+		<link rel="shortcut icon" href="/assets/fsms-favicon-25870e469b3b867f883d546bbb3e8698.ico" type="image/x-icon"/>
+	</head>
+	<body>
+		<div id='slide-in-sidebar' class='sidr right'>
+			<div class='sidebar-close'>Fermer <i class="fa fa-times"></i></div>
+			<h2 class='sidebar-title'>
+			</h2>
+			<div class='sidebar-target'></div>
+		</div>
+		<div class="notification-holder">
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+		<nav class='navbar navbar-default' role='navigation'>
+			<div class='container' id='two-column-layout-nav-container'>
+				<div class='navbar-header col-md-1' id='brand-wrapper'>
+
+
+						<a href="/" id="logo-link" class="navbar-brand">
+							<img src="/assets/logo-stroked-931bfa89e7a5d09bca07cab3108b9a33.png" id='two-column-layout-logo'/>
+						</a>
+
+				</div>
+				<div class='collapse navbar-collapse'>
+					<ul class='nav navbar-nav'>
+						<li class="active">
+							<a href="/inbox" id="interaction-page-link">
+								Boîte de réception
+							</a>
+						</li>
+						<li class="">
+							<a href="/people" id="contact-page-link">People</a>
+						</li>
+						<li class="">
+							<a href="/activities" name="recipe-page-link">Activités</a>
+						</li>
+
+							<li class="">
+								<a href="/help/firsttime" name="help-firsttime-link">
+
+
+										Pour commencer
+
+								</a>
+								<span class="hide-firsttime-link">
+									<a href="/help/hideFirstTimeLink" name="hideFirstTimeLink">
+										<i class="fa fa-times"></i>
+									</a>
+								</span>
+							</li>
+
+					</ul>
+					<div class='dropdown navbar-right'>
+						<button class='navbar-btn btn btn-default dropdown-toggle' type='button' id='settings-dropdown-icon' data-toggle='dropdown'>
+							<i class='fa fa-cog'></i>
+						</button>
+						<ul class='dropdown-menu' role='menu' id='settings-dropdown-menu'>
+
+<li role='presentation' class='dropdown-header'>
+	Paramètres
+</li>
+<li role="presentation">
+	<a href="/settings/general">
+		Général
+	</a>
+</li>
+<li role='presentation'>
+	<a href="/connection/list">
+		Connexions
+	</a>
+</li>
+<li role='presentation'>
+	<a href="/help/firsttime">
+
+
+			Pour commencer
+
+	</a>
+</li>
+<li role='presentation'>
+	<a href="/settings/porting">
+		Importation et exportation
+	</a>
+</li>
+<li role='presentation'>
+	<a href="/status/show">
+		Statistiques d’utilisation
+	</a>
+</li>
+<li role='presentation'>
+	<a href="/settings/logs">
+		Afficher les journaux système
+	</a>
+</li>
+<li role='presentation'>
+	<a href="/help" target="__blank">
+		Documents d’aide
+	</a>
+</li>
+
+						</ul>
+					</div>
+					<div class='navbar-right'>
+						<form action="/search/index" method="get" name="search" role="form" class="navbar-form" id="search" >
+							<input
+								type='text'
+								name='query'
+								value=""
+								class='form-control'
+								placeholder="Recherche de SMS"
+								/>
+							<input type='hidden' name='type' value="frontlinesms2.TextMessage"/>
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class='container'>
+			<div class="row">
+				<div class="col-sm-12">
+					<!--
+	Holder for notifications that are not part of the normal notifications categories. This can have warnings to the admins when
+	accessing a user's workspace for example.
+-->
+
+				</div>
+			</div>
+			<div class='row'>
+				<div id="main-content" class='col-md-12'>
+
+			<div class="row">
+				<div id="context-menu" class='col-md-3'>
+
+				<ul class='nav nav-stacked nav-pills context-menu-links'>
+					<li id="interaction-section-all" class="active">
+						<a href="/inbox">
+							<div class="menu-icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							Toutes les communications
+							<span class='entity_count badge pull-right zero'></span>
+						</a>
+					</li>
+					<li id="interaction-section-allWithoutAutomations" class="">
+                                               <a href="/inbox?hasNoRecipeEvent=true&amp;inbound=true">
+                                                       <div class="menu-icon">
+                                                               <i class="fa fa-minus-square-o"></i>
+                                                       </div>
+                                                       N’a pas déclenché une activité
+							<span class='entity_count badge pull-right zero'></span>
+                                               </a>
+					</li>
+					<li id="interaction-section-textmessage-received" class="">
+						<a href="/inbox?type=TextMessage&amp;inbound=true">
+							<div class="menu-icon">
+								<i class="fa fa-envelope-o"></i>
+							</div>
+							SMS reçu
+							<span class='entity_count badge pull-right zero'></span>
+						</a>
+					</li>
+					<li id="interaction-section-textmessage-sent" class="">
+						<a href="/inbox?type=TextMessage&amp;inbound=false&amp;status=SENT">
+							<div class="menu-icon">
+								<i class="fa fa-envelope-o"></i>
+								<i class="fa fa-paper-plane-o"></i>
+							</div>
+							SMS envoyé
+						</a>
+					</li>
+					<li id="interaction-section-textmessage-failed" class="">
+						<a href="/inbox?type=TextMessage&amp;inbound=false&amp;status=FAILED">
+							<div class="menu-icon">
+								<i class="fa fa-envelope-o"></i>
+								<i class="fa fa-exclamation"></i>
+							</div>
+							SMS inabouti
+							<span class='entity_count badge pull-right zero'></span>
+						</a>
+					</li>
+					<li id="interaction-section-textmessage-pending" class="">
+						<a href="/inbox?type=TextMessage&amp;inbound=false&amp;status=PENDING">
+							<div class="menu-icon">
+								<i class="fa fa-envelope-o"></i>
+								<i class="fa fa-bolt"></i>
+							</div>
+							SMS en attente
+							<span class='entity_count badge pull-right zero'></span>
+						</a>
+					</li>
+
+
+
+					<li id="interaction-section-missedcall" class="">
+						<a href="/inbox?type=MissedCall">
+							<div class="menu-icon">
+								<i class="fa fa-phone"></i>
+							</div>
+							Appels manqués
+							<span class='entity_count badge pull-right zero'></span>
+						</a>
+					</li>
+
+
+
+					<li id="interaction-section-deleted" class="">
+						<a href="/inbox?deleted=true">
+							<div class="menu-icon">
+								<i class="fa fa-trash-o"></i>
+							</div>
+							Communications supprimées
+						</a>
+					</li>
+				</ul>
+				<hr/>
+				<ul class='nav nav-stacked nav-pills context-menu-links nav-nested' id='interaction-tags-menu'>
+					<li>
+						<h5>
+							<i class="fa fa-tags"></i>
+							<span>
+								Vos repères
+							</span>
+						</h5>
+					</li>
+
+				</ul>
+
+				</div>
+				<div id="content" class='col-md-9'>
+					<div class="row">
+						<div class='col-md-12 subnav pull-right'>
+
+
+					<div id="interactions-bulk-actions" class='bulk-actions'>
+
+
+							<button id="interaction-reply-bulk-action" class="btn btn-default disabled" data-action="reply" title="Répondre">
+								<i class="fa fa-reply"></i>
+							</button>
+
+
+
+							<button id="interaction-delete-bulk-action" class="btn btn-default disabled" data-action="delete" title="Supprimer">
+								<i class="fa fa-trash-o"></i>
+							</button>
+							<button id='interaction-export-bulk-action' data-action='export' data-section="all" data-tag="" class='btn btn-default'>
+								Export all
+							</button>
+
+
+
+					</div>
+
+
+							<button id='send-new-message' class='btn btn-default'>Envoi du SMS </button>
+
+						</div>
+					</div>
+
+				<div class='row'>
+
+			<input type="hidden" name="interactionCount" value="7" id="interactionCount" />
+			<div class='row'>
+				<div id='new-message-notification-center' class='col-md-12'>
+					<a href="/inbox?%7B%22secret%22%3A%22%22%2C%22message%22%3A%22ESSAI+du+API%22%2C%22recipents%22%3A%5B%7B%22type%22%3A%22mobile%22%2C%22value%22%3A%22+243978532756%22%7D%5D%7D=&amp;offset=0" class="alert alert-info new-interaction-notification">
+					</a>
+				</div>
+			</div>
+
+			<div class="col-md-12 subnav pull-right">
+				<div class="pagination-navigation">
+					<ul class="pagination pagination-sm">
+						<li>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+
+
+
+
+
+
+<table id='interaction-list' class='table entity-list-table'>
+	<thead>
+		<tr>
+			<th class="shrink">
+				<input type="hidden" name="_selectAllInteractions" /><input type="checkbox" name="selectAllInteractions" id="selectAllInteractions"  />
+			</th>
+			<th></th>
+			<th>Nom</th>
+			<th>Sommaire</th>
+			<th>Date</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+
+
+
+
+
+
+
+		<tr id="interaction-summary-99-dispatch-34" class="interaction-summary outbound dispatch read">
+			<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+			<td class='type-cell shrink no-wrap'>
+				<i class='fa fa-envelope-o'></i><i class='fa fa-bolt'></i>
+			</td>
+			<td class='no-wrap shrink interaction-src'>
+				<p>+243 978 532 756</p>
+
+			</td>
+			<td>
+				<span class="interaction-content">
+					De FrontlineSMS \o/ vous avez configur&Atilde;&copy; votre/vos connexio&hellip;
+				</span>
+				<span class="interaction-tags" interaction-id='99' data-tags='[]'>
+				</span>
+			</td>
+			<td class="no-wrap shrink">
+				11:00 15 mai 2018
+			</td>
+			<td class='shrink'>
+				<button type='button' class='btn btn-default btn-xs toggle-interaction-detail'>
+					<i class='fa fa-expand'></i>
+				</button>
+			</td>
+		</tr>
+
+
+<tr id="interaction-detail-99-dispatch-34" class="interaction-detail outbound dispatch read">
+
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+
+	<td class='type-cell shrink no-wrap'>
+		<i class='fa fa-envelope-o'></i><i class='fa fa-bolt'></i>
+	</td>
+	<td class='contact-information-cell shrink interaction-src'>
+
+
+		<p class='detail'>+243 978 532 756</p>
+		<p class='detail'>
+			<i class="flag flag-cd"></i>
+			<span>+243 978 532 756</span>
+		</p>
+		<p class='detail'>
+			<a href="/contact/createContact?mobile=%2B243978532756" class="btn btn-default btn-xs create-contact">
+				Ajouter aux contacts
+			</a>
+		</p>
+
+
+
+	</td>
+	<td>
+		<p class="interaction-content">De FrontlineSMS \o/ vous avez configur&Atilde;&copy; votre/vos connexion(s) pour envoyer et recevoir des SMS \o/</p>
+		<div class="interaction-tags" interaction-id='99' data-tags='[]'>
+			<i class="fa fa-tags"></i>
+		</div>
+		<div class="interaction-recipe-tracking pseudo-table-row">
+			<i class="fa fa-gears pseudo-table-cell"></i>
+			<span class="placeholder pseudo-table-cell">
+				<i class="fa fa-refresh fa-spin"></i>
+				Chargement en cours…
+			</span>
+		</div>
+
+	</td>
+	<td class="no-wrap shrink">
+		<p>
+			11:00 15 mai 2018
+		</p>
+	</td>
+	<td class='shrink no-wrap'>
+
+
+
+<div class='interaction-actions btn-group-vertical interaction-action-buttons' data-correspondent="+243978532756">
+	<button type='button' class='btn btn-default btn-xs collapse-interaction toggle-interaction-detail'>
+		<i class='fa fa-compress'></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="reply" title="Réponse sélectionnée ">
+		<i class="fa fa-reply"></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="forward" title="Transfert sélectionné ">
+		<i class="fa fa-mail-forward"></i>
+	</button>
+
+
+
+
+
+
+		<a href="/interaction/deleteDispatch/34" type="button" class="btn btn-default btn-xs" data-action="delete" title="Suppression sélectionnée ">
+			<i class="fa fa-trash-o"></i>
+		</a>
+
+
+</div>
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+		<tr id="interaction-summary-98-dispatch-33" class="interaction-summary outbound dispatch read">
+			<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+			<td class='type-cell shrink no-wrap'>
+				<i class='fa fa-envelope-o'></i><i class='fa fa-paper-plane-o'></i>
+			</td>
+			<td class='no-wrap shrink interaction-src'>
+				<p>150</p>
+
+			</td>
+			<td>
+				<span class="interaction-content">
+					ok
+				</span>
+				<span class="interaction-tags" interaction-id='98' data-tags='[]'>
+				</span>
+			</td>
+			<td class="no-wrap shrink">
+				10:11 15 mai 2018
+			</td>
+			<td class='shrink'>
+				<button type='button' class='btn btn-default btn-xs toggle-interaction-detail'>
+					<i class='fa fa-expand'></i>
+				</button>
+			</td>
+		</tr>
+
+
+<tr id="interaction-detail-98-dispatch-33" class="interaction-detail outbound dispatch read">
+
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+
+	<td class='type-cell shrink no-wrap'>
+		<i class='fa fa-envelope-o'></i><i class='fa fa-paper-plane-o'></i>
+	</td>
+	<td class='contact-information-cell shrink interaction-src'>
+
+
+		<p class='detail'>150</p>
+		<p class='detail'>
+			<i class="flag flag-frontlinesms"></i>
+			<span>150</span>
+		</p>
+		<p class='detail'>
+			<a href="/contact/createContact?mobile=150" class="btn btn-default btn-xs create-contact">
+				Ajouter aux contacts
+			</a>
+		</p>
+
+
+
+	</td>
+	<td>
+		<p class="interaction-content">ok</p>
+		<div class="interaction-tags" interaction-id='98' data-tags='[]'>
+			<i class="fa fa-tags"></i>
+		</div>
+		<div class="interaction-recipe-tracking pseudo-table-row">
+			<i class="fa fa-gears pseudo-table-cell"></i>
+			<span class="placeholder pseudo-table-cell">
+				<i class="fa fa-refresh fa-spin"></i>
+				Chargement en cours…
+			</span>
+		</div>
+
+	</td>
+	<td class="no-wrap shrink">
+		<p>
+			10:11 15 mai 2018
+		</p>
+	</td>
+	<td class='shrink no-wrap'>
+
+
+
+<div class='interaction-actions btn-group-vertical interaction-action-buttons' data-correspondent="150">
+	<button type='button' class='btn btn-default btn-xs collapse-interaction toggle-interaction-detail'>
+		<i class='fa fa-compress'></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="reply" title="Réponse sélectionnée ">
+		<i class="fa fa-reply"></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="forward" title="Transfert sélectionné ">
+		<i class="fa fa-mail-forward"></i>
+	</button>
+
+
+
+
+
+
+		<a href="/interaction/deleteDispatch/33" type="button" class="btn btn-default btn-xs" data-action="delete" title="Suppression sélectionnée ">
+			<i class="fa fa-trash-o"></i>
+		</a>
+
+
+</div>
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+
+	<tr id="interaction-summary-97" class="interaction-summary read">
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+		<td class='type-cell shrink no-wrap'>
+			<i class='fa fa-envelope-o'></i>
+		</td>
+		<td class='no-wrap shrink interaction-src'>
+			<p>+243 973 386 258</p>
+
+		</td>
+		<td>
+			<span class="interaction-content">
+				Bonsoir
+			</span>
+			<span class="interaction-tags" interaction-id='97' data-tags='[]'>
+			</span>
+		</td>
+		<td class="no-wrap shrink">
+			08:39 15 mai 2018
+		</td>
+		<td class='shrink'>
+			<button type='button' class='btn btn-default btn-xs toggle-interaction-detail'>
+				<i class='fa fa-expand'></i>
+			</button>
+		</td>
+	</tr>
+
+<tr id="interaction-detail-97" class="interaction-detail read">
+
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+
+	<td class='type-cell shrink no-wrap'>
+		<i class='fa fa-envelope-o'></i>
+	</td>
+	<td class='contact-information-cell shrink interaction-src'>
+
+
+		<p class='detail'>+243 973 386 258</p>
+		<p class='detail'>
+			<i class="flag flag-cd"></i>
+			<span>+243 973 386 258</span>
+		</p>
+		<p class='detail'>
+			<a href="/contact/createContact?mobile=%2B243973386258" class="btn btn-default btn-xs create-contact">
+				Ajouter aux contacts
+			</a>
+		</p>
+
+
+
+	</td>
+	<td>
+		<p class="interaction-content">Bonsoir </p>
+		<div class="interaction-tags pseudo-table-row" interaction-id='97' data-tags='[]'>
+			<i class="fa fa-tags pseudo-table-cell"></i>
+			<span class="pseudo-table-cell"></span>
+		</div>
+		<div class="interaction-recipe-tracking pseudo-table-row">
+			<i class="fa fa-gears pseudo-table-cell"></i>
+			<span class="placeholder pseudo-table-cell">
+				<i class="fa fa-refresh fa-spin"></i>
+				Chargement en cours…
+			</span>
+		</div>
+
+			<div class='interaction-connection'>
+				<i class='fa fa-signal'></i>
+				<span>
+					Reçu via Auto-configur&eacute; TCT Mobile International Limited HSPA Data Card sur le port COM7&quot;
+				</span>
+			</div>
+
+	</td>
+	<td class="no-wrap shrink">
+		<p>
+			08:39 15 mai 2018
+		</p>
+	</td>
+	<td class='shrink no-wrap'>
+
+
+
+<div class='interaction-actions btn-group-vertical interaction-action-buttons' data-correspondent="+243973386258">
+	<button type='button' class='btn btn-default btn-xs collapse-interaction toggle-interaction-detail'>
+		<i class='fa fa-compress'></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="reply" title="Réponse sélectionnée ">
+		<i class="fa fa-reply"></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="forward" title="Transfert sélectionné ">
+		<i class="fa fa-mail-forward"></i>
+	</button>
+
+
+		<a href="/interaction/deleteInteraction/97" type="button" class="btn btn-default btn-xs" data-action="delete" title="Suppression sélectionnée ">
+			<i class="fa fa-trash-o"></i>
+		</a>
+
+
+
+
+</div>
+
+	</td>
+</tr>
+
+
+
+
+
+
+	<tr id="interaction-summary-70" class="interaction-summary read">
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+		<td class='type-cell shrink no-wrap'>
+			<i class='fa fa-envelope-o'></i>
+		</td>
+		<td class='no-wrap shrink interaction-src'>
+			<p>+243 992 971 140</p>
+
+		</td>
+		<td>
+			<span class="interaction-content">
+				*105#
+			</span>
+			<span class="interaction-tags" interaction-id='70' data-tags='[]'>
+			</span>
+		</td>
+		<td class="no-wrap shrink">
+			10:03 15 mai 2018
+		</td>
+		<td class='shrink'>
+			<button type='button' class='btn btn-default btn-xs toggle-interaction-detail'>
+				<i class='fa fa-expand'></i>
+			</button>
+		</td>
+	</tr>
+
+<tr id="interaction-detail-70" class="interaction-detail read">
+
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+
+	<td class='type-cell shrink no-wrap'>
+		<i class='fa fa-envelope-o'></i>
+	</td>
+	<td class='contact-information-cell shrink interaction-src'>
+
+
+		<p class='detail'>+243 992 971 140</p>
+		<p class='detail'>
+			<i class="flag flag-cd"></i>
+			<span>+243 992 971 140</span>
+		</p>
+		<p class='detail'>
+			<a href="/contact/createContact?mobile=%2B243992971140" class="btn btn-default btn-xs create-contact">
+				Ajouter aux contacts
+			</a>
+		</p>
+
+
+
+	</td>
+	<td>
+		<p class="interaction-content">*105#</p>
+		<div class="interaction-tags pseudo-table-row" interaction-id='70' data-tags='[]'>
+			<i class="fa fa-tags pseudo-table-cell"></i>
+			<span class="pseudo-table-cell"></span>
+		</div>
+		<div class="interaction-recipe-tracking pseudo-table-row">
+			<i class="fa fa-gears pseudo-table-cell"></i>
+			<span class="placeholder pseudo-table-cell">
+				<i class="fa fa-refresh fa-spin"></i>
+				Chargement en cours…
+			</span>
+		</div>
+
+	</td>
+	<td class="no-wrap shrink">
+		<p>
+			10:03 15 mai 2018
+		</p>
+	</td>
+	<td class='shrink no-wrap'>
+
+
+
+<div class='interaction-actions btn-group-vertical interaction-action-buttons' data-correspondent="+243992971140">
+	<button type='button' class='btn btn-default btn-xs collapse-interaction toggle-interaction-detail'>
+		<i class='fa fa-compress'></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="reply" title="Réponse sélectionnée ">
+		<i class="fa fa-reply"></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="forward" title="Transfert sélectionné ">
+		<i class="fa fa-mail-forward"></i>
+	</button>
+
+
+		<a href="/interaction/deleteInteraction/70" type="button" class="btn btn-default btn-xs" data-action="delete" title="Suppression sélectionnée ">
+			<i class="fa fa-trash-o"></i>
+		</a>
+
+
+
+
+</div>
+
+	</td>
+</tr>
+
+
+
+
+
+
+	<tr id="interaction-summary-68" class="interaction-summary read">
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+		<td class='type-cell shrink no-wrap'>
+			<i class='fa fa-envelope-o'></i>
+		</td>
+		<td class='no-wrap shrink interaction-src'>
+			<p>+243 992 971 140</p>
+
+		</td>
+		<td>
+			<span class="interaction-content">
+				*105#
+			</span>
+			<span class="interaction-tags" interaction-id='68' data-tags='[]'>
+			</span>
+		</td>
+		<td class="no-wrap shrink">
+			10:03 15 mai 2018
+		</td>
+		<td class='shrink'>
+			<button type='button' class='btn btn-default btn-xs toggle-interaction-detail'>
+				<i class='fa fa-expand'></i>
+			</button>
+		</td>
+	</tr>
+
+<tr id="interaction-detail-68" class="interaction-detail read">
+
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+
+	<td class='type-cell shrink no-wrap'>
+		<i class='fa fa-envelope-o'></i>
+	</td>
+	<td class='contact-information-cell shrink interaction-src'>
+
+
+		<p class='detail'>+243 992 971 140</p>
+		<p class='detail'>
+			<i class="flag flag-cd"></i>
+			<span>+243 992 971 140</span>
+		</p>
+		<p class='detail'>
+			<a href="/contact/createContact?mobile=%2B243992971140" class="btn btn-default btn-xs create-contact">
+				Ajouter aux contacts
+			</a>
+		</p>
+
+
+
+	</td>
+	<td>
+		<p class="interaction-content">*105#</p>
+		<div class="interaction-tags pseudo-table-row" interaction-id='68' data-tags='[]'>
+			<i class="fa fa-tags pseudo-table-cell"></i>
+			<span class="pseudo-table-cell"></span>
+		</div>
+		<div class="interaction-recipe-tracking pseudo-table-row">
+			<i class="fa fa-gears pseudo-table-cell"></i>
+			<span class="placeholder pseudo-table-cell">
+				<i class="fa fa-refresh fa-spin"></i>
+				Chargement en cours…
+			</span>
+		</div>
+
+	</td>
+	<td class="no-wrap shrink">
+		<p>
+			10:03 15 mai 2018
+		</p>
+	</td>
+	<td class='shrink no-wrap'>
+
+
+
+<div class='interaction-actions btn-group-vertical interaction-action-buttons' data-correspondent="+243992971140">
+	<button type='button' class='btn btn-default btn-xs collapse-interaction toggle-interaction-detail'>
+		<i class='fa fa-compress'></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="reply" title="Réponse sélectionnée ">
+		<i class="fa fa-reply"></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="forward" title="Transfert sélectionné ">
+		<i class="fa fa-mail-forward"></i>
+	</button>
+
+
+		<a href="/interaction/deleteInteraction/68" type="button" class="btn btn-default btn-xs" data-action="delete" title="Suppression sélectionnée ">
+			<i class="fa fa-trash-o"></i>
+		</a>
+
+
+
+
+</div>
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+		<tr id="interaction-summary-71-dispatch-2" class="interaction-summary outbound dispatch read">
+			<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+			<td class='type-cell shrink no-wrap'>
+				<i class='fa fa-envelope-o'></i><i class='fa fa-exclamation'></i>
+			</td>
+			<td class='no-wrap shrink interaction-src'>
+				<p>+243 992 971 140</p>
+
+			</td>
+			<td>
+				<span class="interaction-content">
+					Bonjour
+    [3] =>  vous avez souscrit &agrave; notre service de Ristourne.
+&hellip;
+				</span>
+				<span class="interaction-tags" interaction-id='71' data-tags='[]'>
+				</span>
+			</td>
+			<td class="no-wrap shrink">
+				10:02 15 mai 2018
+			</td>
+			<td class='shrink'>
+				<button type='button' class='btn btn-default btn-xs toggle-interaction-detail'>
+					<i class='fa fa-expand'></i>
+				</button>
+			</td>
+		</tr>
+
+
+<tr id="interaction-detail-71-dispatch-2" class="interaction-detail outbound dispatch read">
+
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+
+	<td class='type-cell shrink no-wrap'>
+		<i class='fa fa-envelope-o'></i><i class='fa fa-exclamation'></i>
+	</td>
+	<td class='contact-information-cell shrink interaction-src'>
+
+
+		<p class='detail'>+243 992 971 140</p>
+		<p class='detail'>
+			<i class="flag flag-cd"></i>
+			<span>+243 992 971 140</span>
+		</p>
+		<p class='detail'>
+			<a href="/contact/createContact?mobile=%2B243992971140" class="btn btn-default btn-xs create-contact">
+				Ajouter aux contacts
+			</a>
+		</p>
+
+
+
+	</td>
+	<td>
+		<p class="interaction-content">Bonjour
+    [4] =>  vous avez souscrit &agrave; notre service de Ristourne.
+Veillez composer :
+*105*2000*7# ou
+*105*5000*30#</p>
+		<div class="interaction-tags" interaction-id='71' data-tags='[]'>
+			<i class="fa fa-tags"></i>
+		</div>
+		<div class="interaction-recipe-tracking pseudo-table-row">
+			<i class="fa fa-gears pseudo-table-cell"></i>
+			<span class="placeholder pseudo-table-cell">
+				<i class="fa fa-refresh fa-spin"></i>
+				Chargement en cours…
+			</span>
+		</div>
+
+	</td>
+	<td class="no-wrap shrink">
+		<p>
+			10:02 15 mai 2018
+		</p>
+	</td>
+	<td class='shrink no-wrap'>
+
+
+
+<div class='interaction-actions btn-group-vertical interaction-action-buttons' data-correspondent="+243992971140">
+	<button type='button' class='btn btn-default btn-xs collapse-interaction toggle-interaction-detail'>
+		<i class='fa fa-compress'></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="reply" title="Réponse sélectionnée ">
+		<i class="fa fa-reply"></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="forward" title="Transfert sélectionné ">
+		<i class="fa fa-mail-forward"></i>
+	</button>
+
+
+			<a href="/interaction/retryDispatch?dispatchId=2&amp;redirectURI=%2Finbox" id="retry-dispatch-2" class="btn btn-default btn-xs retry">
+				<i class="fa fa-repeat"></i>
+			</a>
+
+
+
+
+
+		<a href="/interaction/deleteDispatch/2" type="button" class="btn btn-default btn-xs" data-action="delete" title="Suppression sélectionnée ">
+			<i class="fa fa-trash-o"></i>
+		</a>
+
+
+</div>
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+		<tr id="interaction-summary-69-dispatch-1" class="interaction-summary outbound dispatch read">
+			<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+			<td class='type-cell shrink no-wrap'>
+				<i class='fa fa-envelope-o'></i><i class='fa fa-exclamation'></i>
+			</td>
+			<td class='no-wrap shrink interaction-src'>
+				<p>+243 992 971 140</p>
+
+			</td>
+			<td>
+				<span class="interaction-content">
+					Bonjour
+    [5] =>  vous avez souscrit &agrave; notre service de Ristourne.
+&hellip;
+				</span>
+				<span class="interaction-tags" interaction-id='69' data-tags='[]'>
+				</span>
+			</td>
+			<td class="no-wrap shrink">
+				10:01 15 mai 2018
+			</td>
+			<td class='shrink'>
+				<button type='button' class='btn btn-default btn-xs toggle-interaction-detail'>
+					<i class='fa fa-expand'></i>
+				</button>
+			</td>
+		</tr>
+
+
+<tr id="interaction-detail-69-dispatch-1" class="interaction-detail outbound dispatch read">
+
+		<td class="shrink"><input type="hidden" name="_interaction-checkbox" /><input type="checkbox" name="interaction-checkbox" class="interaction-checkbox" id="interaction-checkbox"  /></td>
+
+	<td class='type-cell shrink no-wrap'>
+		<i class='fa fa-envelope-o'></i><i class='fa fa-exclamation'></i>
+	</td>
+	<td class='contact-information-cell shrink interaction-src'>
+
+
+		<p class='detail'>+243 992 971 140</p>
+		<p class='detail'>
+			<i class="flag flag-cd"></i>
+			<span>+243 992 971 140</span>
+		</p>
+		<p class='detail'>
+			<a href="/contact/createContact?mobile=%2B243992971140" class="btn btn-default btn-xs create-contact">
+				Ajouter aux contacts
+			</a>
+		</p>
+
+
+
+	</td>
+	<td>
+		<p class="interaction-content">Bonjour
+    [6] =>  vous avez souscrit &agrave; notre service de Ristourne.
+Veillez composer :
+*105*2000*7# ou
+*105*5000*30#</p>
+		<div class="interaction-tags" interaction-id='69' data-tags='[]'>
+			<i class="fa fa-tags"></i>
+		</div>
+		<div class="interaction-recipe-tracking pseudo-table-row">
+			<i class="fa fa-gears pseudo-table-cell"></i>
+			<span class="placeholder pseudo-table-cell">
+				<i class="fa fa-refresh fa-spin"></i>
+				Chargement en cours…
+			</span>
+		</div>
+
+	</td>
+	<td class="no-wrap shrink">
+		<p>
+			10:01 15 mai 2018
+		</p>
+	</td>
+	<td class='shrink no-wrap'>
+
+
+
+<div class='interaction-actions btn-group-vertical interaction-action-buttons' data-correspondent="+243992971140">
+	<button type='button' class='btn btn-default btn-xs collapse-interaction toggle-interaction-detail'>
+		<i class='fa fa-compress'></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="reply" title="Réponse sélectionnée ">
+		<i class="fa fa-reply"></i>
+	</button>
+	<button type="button" class="btn btn-default btn-xs" data-action="forward" title="Transfert sélectionné ">
+		<i class="fa fa-mail-forward"></i>
+	</button>
+
+
+			<a href="/interaction/retryDispatch?dispatchId=1&amp;redirectURI=%2Finbox" id="retry-dispatch-1" class="btn btn-default btn-xs retry">
+				<i class="fa fa-repeat"></i>
+			</a>
+
+
+
+
+
+		<a href="/interaction/deleteDispatch/1" type="button" class="btn btn-default btn-xs" data-action="delete" title="Suppression sélectionnée ">
+			<i class="fa fa-trash-o"></i>
+		</a>
+
+
+</div>
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+	</tbody>
+</table>
+
+			<div class="col-md-12 subnav pull-right">
+				<div class="pagination-navigation">
+					<ul class="pagination pagination-sm">
+						<li>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+
+				</div>
+
+
+				</div>
+			</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+	app_info.init(1000
+    [7] =>  1000
+    [8] =>  3000);
+</script><script type="text/javascript">
+	var url_root = url_root || "/";
+	url = "/inbox/";
+</script><script type="text/javascript">
+
+</script><script type="text/javascript">
+	var url_root = url_root || "/";
+	url = "/inbox/";
+</script><script type="text/javascript">
+	systemNotification = SystemNotification()
+<!-- apply onclose listeners to all  -->
+
+</script><script type="text/javascript">
+
+
+var i18nStrings = i18nStrings || {};
+function i18n(key) {
+	var translated =
+
+			(typeof(i18nStrings["frontlinesms-core"])!=="undefined"? i18nStrings["frontlinesms-core"][key]: null) ||
+
+			key;
+	if(typeof(translated) == 'undefined') return key; // FIXME this line looks unnecessary
+
+	if (arguments.length == 2 && Array.isArray(arguments[1])){
+		for(i in arguments[1]) {
+			translated = translated.replace("{"+(i)+"}"
+    [9] =>  arguments[1][i]);
+		}
+		return translated;
+	}
+
+	for(i=arguments.length-1; i>0; --i) {
+		translated = translated.replace("{"+(i-1)+"}"
+    [10] =>  arguments[i]);
+	}
+	return translated;
+}
+
+
+
+			</script><script type="text/javascript">
+				var sendEnabledConnectionList = [{"class":"frontlinesms2.SmslibFconnection"
+    [11] => "id":35
+    [12] => "allMessages":true
+    [13] => "baud":115200
+    [14] => "concurrentConsumers":1
+    [15] => "imsi":"630020725019916"
+    [16] => "manufacturer":"TCT Mobile International Limited"
+    [17] => "model":"HSPA Data Card"
+    [18] => "name":"Auto-configuré TCT Mobile International Limited HSPA Data Card sur le port COM7\""
+    [19] => "pin":null
+    [20] => "port":"COM7"
+    [21] => "receiveEnabled":true
+    [22] => "sendEnabled":true
+    [23] => "serial":"867612007782497"
+    [24] => "systemEnabled":true
+    [25] => "userEnabled":true}]
+;
+				</script>
+	</body>
+</html>
+
+
+
+
+)

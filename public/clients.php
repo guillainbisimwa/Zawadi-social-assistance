@@ -40,52 +40,52 @@
         echo "Veillez entrer le adress  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["niv_rev"]))
+      else if ($_POST["niv_rev"] < 0)
       {
         echo "Veillez entrer le Niveau revnue  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["taille_menage"]))
+      else if ($_POST["taille_menage"] < 0)
       {
         echo "Veillez entrer le taille_menage  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["t_m_g"]))
+      else if ($_POST["t_m_g"] < 0)
       {
         echo "Veillez entrer le t_m_g  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["t_m_f"]))
+      else if ($_POST["t_m_f"] < 0)
       {
         echo "Veillez entrer le t_m_f  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["enf_sco"]))
+      else if ($_POST["enf_sco"] < 0)
       {
         echo "Veillez entrer le enf_sco  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["enf_sco_g"]))
+      else if ($_POST["enf_sco_g"] < 0)
       {
         echo "Veillez entrer le enf_sco_g  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["enf_sco_f"]))
+      else if ($_POST["enf_sco_f"] < 0)
       {
         echo "Veillez entrer le enf_sco_f  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["enf_zsa"]))
+      else if ($_POST["enf_zsa"] < 0)
       {
         echo "Veillez entrer le enf_zsa  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["enf_zsa_g"]))
+      else if ($_POST["enf_zsa_g"] < 0)
       {
         echo "Veillez entrer le enf_zsa_g  s.v.p <br>";
         exit;
       }
-      else if (empty($_POST["enf_zsa_f"]))
+      else if ($_POST["enf_zsa_f"] < 0)
       {
         echo "Veillez entrer le enf_zsa_f  s.v.p <br>";
         exit;
