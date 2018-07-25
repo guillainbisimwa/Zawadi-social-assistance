@@ -20,6 +20,5 @@
 ## Capture d'ecran
 <p align="center">
 
-<img src="https://github.com/guillainbisimwa/orangeProject/blob/master/public/img/capture.png" data-canonical-src="https://github.com/guillainbisimwa/orangeProject/blob/master/public/img/capture.png" style="max-width:100%;">
-
+<img src="https://github.com/guillainbisimwa/orangeProject/blob/master/public/img/capture.png" data-canonical-src="https://github.com/guillainbisimwa/Zawadi-social-assistance/blob/master/public/img/capture.PNG" style="max-width:100%;">
 </p>
